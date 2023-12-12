@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pharmacy
 {
-    public partial class frmManager : Form
+    public partial class frmDirector : Form
     {
-        public frmManager()
+        public frmDirector()
         {
             InitializeComponent();
         }
@@ -21,21 +21,24 @@ namespace Pharmacy
         {
             Form frm = new frmProduct();
             frm.Show();
-            this.Hide();
         }
 
         private void btnSotr_Click(object sender, EventArgs e)
         {
             Form frm = new frmSotr();
             frm.Show();
-            this.Hide();
+        }
+
+        private void btnCassa_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmCashier();
+            frm.Show();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             Form frm = new frmAuth();
             frm.Show();
-            this.Hide();
         }
     }
 }

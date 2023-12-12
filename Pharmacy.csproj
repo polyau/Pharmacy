@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddMedicament.Designer.cs">
+      <DependentUpon>frmAddMedicament.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,12 @@
     </Compile>
     <Compile Include="frmAuth.Designer.cs">
       <DependentUpon>frmAuth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDirector.Designer.cs">
+      <DependentUpon>frmDirector.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManager.cs">
       <SubType>Form</SubType>
@@ -94,6 +106,12 @@
     <Compile Include="frmSotr.Designer.cs">
       <DependentUpon>frmSotr.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmWriteOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWriteOff.Designer.cs">
+      <DependentUpon>frmWriteOff.cs</DependentUpon>
+    </Compile>
     <Compile Include="PharmacyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,11 +119,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddMedicament.resx">
+      <DependentUpon>frmAddMedicament.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddProduct.resx">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAnalogs.resx">
       <DependentUpon>frmAnalogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDirector.resx">
+      <DependentUpon>frmDirector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManager.resx">
       <DependentUpon>frmManager.cs</DependentUpon>
@@ -124,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSotr.resx">
       <DependentUpon>frmSotr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWriteOff.resx">
+      <DependentUpon>frmWriteOff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

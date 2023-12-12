@@ -28,15 +28,30 @@ namespace Pharmacy
         private void ClearInsert(object sender, EventArgs e)
         {
             txtFio.Text = "";
-            txtPosition.Text = "";
+            cbPosition.Text = "";
             txtEmail.Text = "";
             txtPhone.Text = "";
         }
 
         private void btnAddSotr_Click(object sender, EventArgs e)
         {
+            // проверка уникальности номера
+            string query = "SELECT COUNT(*) FROM Sotr WHERE PhoneNum = @phoneNum";
 
-            if (string.IsNullOrEmpty(txtFio.Text) || string.IsNullOrEmpty(txtPosition.Text))
+            SqlCommand command = new SqlCommand(query, sqlConnection);
+            command.Parameters.AddWithValue("@phoneNum", txtPhone.Text);
+
+            sqlConnection.Open();
+            int count = (int)command.ExecuteScalar(); // Получаем количество записей с введенным номером
+            sqlConnection.Close();
+            // Проверяем, было ли найдено совпадение
+            if (count > 0)
+            {
+                MessageBox.Show("Данный номер телефона уже имеется в базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFio.Text) || string.IsNullOrEmpty(cbPosition.Text))
             {
                 MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -45,7 +60,7 @@ namespace Pharmacy
             else
             {
                 sqlCommand_addSotr.Parameters["@fio"].Value = txtFio.Text;
-                sqlCommand_addSotr.Parameters["@position"].Value = txtPosition.Text;
+                sqlCommand_addSotr.Parameters["@position"].Value = cbPosition.Text;
                 sqlCommand_addSotr.Parameters["@email"].Value = txtEmail.Text;
                 sqlCommand_addSotr.Parameters["@phoneNum"].Value = txtPhone.Text;
                 sqlConnection.Open();
@@ -71,6 +86,18 @@ namespace Pharmacy
                 int selectedIndex = tblSotr.SelectedRows[0].Index;
                 int idSotr = Convert.ToInt32(tblSotr[0, selectedIndex].Value);
                 sqlConnection.Open();
+                using (SqlCommand sqlCommand_retireSotr 
+                   = new SqlCommand("UPDATE Sotr SET Position = 'Уволен ' + Position WHERE idSotr = @idSotr;", sqlConnection))
+                {
+                    sqlCommand_retireSotr.Parameters.AddWithValue("@idSotr", idSotr);
+                    sqlCommand_retireSotr.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+
+                /* // удаление сотрудника
+                int selectedIndex = tblSotr.SelectedRows[0].Index;
+                int idSotr = Convert.ToInt32(tblSotr[0, selectedIndex].Value);
+                sqlConnection.Open();
                 using (SqlCommand sqlCommand_remSotr = new SqlCommand("DELETE FROM Sotr WHERE idSotr = @idSotr", sqlConnection))
                 {
                     sqlCommand_remSotr.Parameters.AddWithValue("@idSotr", idSotr);
@@ -79,11 +106,11 @@ namespace Pharmacy
                 sqlConnection.Close();
               //  MessageBox.Show("Сотрудник удалён", "Удаление сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
               //  sotrBindingSource.RemoveCurrent();
-                
+                */
             }
             else
             {
-                MessageBox.Show("Выберите сотрудника", "Удаление сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выберите сотрудника", "Увольнение сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
              //  sotrBindingSource.RemoveCurrent();
 
@@ -96,5 +123,12 @@ namespace Pharmacy
 
         private void label6_Click(object sender, EventArgs e) { }
         private void txtFio_TextChanged(object sender, EventArgs e) { }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmManager();
+            frm.Show();
+            this.Hide();
+        }
     }
 }

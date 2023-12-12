@@ -765,25 +765,47 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tableProductTableAdapter" GeneratorDataComponentClassName="tableProductTableAdapter" Name="tableProduct" UserDataComponentName="tableProductTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PharmacyConnectionString (Settings)" DbObjectName="Pharmacy.dbo.tableProduct" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Barcode, NameCategory, Brand, NameProduct, Price, MinReserve, InStock FROM dbo.tableProduct</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Barcode" DataSetColumn="Barcode" />
+              <Mapping SourceColumn="NameCategory" DataSetColumn="NameCategory" />
+              <Mapping SourceColumn="Brand" DataSetColumn="Brand" />
+              <Mapping SourceColumn="NameProduct" DataSetColumn="NameProduct" />
+              <Mapping SourceColumn="Price" DataSetColumn="Price" />
+              <Mapping SourceColumn="MinReserve" DataSetColumn="MinReserve" />
+              <Mapping SourceColumn="InStock" DataSetColumn="InStock" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="PharmacyDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="PharmacyDataSet" msprop:Generator_DataSetName="PharmacyDataSet">
+  <xs:element name="PharmacyDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="PharmacyDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PharmacyDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Analog" msprop:Generator_RowEvHandlerName="AnalogRowChangeEventHandler" msprop:Generator_RowDeletedName="AnalogRowDeleted" msprop:Generator_RowDeletingName="AnalogRowDeleting" msprop:Generator_RowEvArgName="AnalogRowChangeEvent" msprop:Generator_TablePropName="Analog" msprop:Generator_RowChangedName="AnalogRowChanged" msprop:Generator_RowChangingName="AnalogRowChanging" msprop:Generator_TableClassName="AnalogDataTable" msprop:Generator_RowClassName="AnalogRow" msprop:Generator_TableVarName="tableAnalog" msprop:Generator_UserTableName="Analog">
+        <xs:element name="Analog" msprop:Generator_RowClassName="AnalogRow" msprop:Generator_RowEvHandlerName="AnalogRowChangeEventHandler" msprop:Generator_RowDeletedName="AnalogRowDeleted" msprop:Generator_RowDeletingName="AnalogRowDeleting" msprop:Generator_RowEvArgName="AnalogRowChangeEvent" msprop:Generator_TablePropName="Analog" msprop:Generator_RowChangedName="AnalogRowChanged" msprop:Generator_UserTableName="Analog" msprop:Generator_RowChangingName="AnalogRowChanging" msprop:Generator_TableClassName="AnalogDataTable" msprop:Generator_TableVarName="tableAnalog">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Barcode" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnVarNameInTable="columnBarcode" msprop:Generator_UserColumnName="Barcode">
+              <xs:element name="Barcode" msprop:Generator_UserColumnName="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnVarNameInTable="columnBarcode">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="13" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BarcodeAnalog" msprop:Generator_ColumnPropNameInRow="BarcodeAnalog" msprop:Generator_ColumnPropNameInTable="BarcodeAnalogColumn" msprop:Generator_ColumnVarNameInTable="columnBarcodeAnalog" msprop:Generator_UserColumnName="BarcodeAnalog">
+              <xs:element name="BarcodeAnalog" msprop:Generator_UserColumnName="BarcodeAnalog" msprop:Generator_ColumnPropNameInTable="BarcodeAnalogColumn" msprop:Generator_ColumnPropNameInRow="BarcodeAnalog" msprop:Generator_ColumnVarNameInTable="columnBarcodeAnalog">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="13" />
@@ -793,11 +815,11 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Category" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowEvArgName="CategoryRowChangeEvent" msprop:Generator_TablePropName="Category" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_RowClassName="CategoryRow" msprop:Generator_TableVarName="tableCategory" msprop:Generator_UserTableName="Category">
+        <xs:element name="Category" msprop:Generator_RowClassName="CategoryRow" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowEvArgName="CategoryRowChangeEvent" msprop:Generator_TablePropName="Category" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_UserTableName="Category" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_TableVarName="tableCategory">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="СodeСategory" msprop:Generator_ColumnPropNameInRow="СodeСategory" msprop:Generator_ColumnPropNameInTable="СodeСategoryColumn" msprop:Generator_ColumnVarNameInTable="columnСodeСategory" msprop:Generator_UserColumnName="СodeСategory" type="xs:unsignedByte" />
-              <xs:element name="NameCategory" msprop:Generator_ColumnPropNameInRow="NameCategory" msprop:Generator_ColumnPropNameInTable="NameCategoryColumn" msprop:Generator_ColumnVarNameInTable="columnNameCategory" msprop:Generator_UserColumnName="NameCategory">
+              <xs:element name="СodeСategory" msprop:Generator_UserColumnName="СodeСategory" msprop:Generator_ColumnPropNameInTable="СodeСategoryColumn" msprop:Generator_ColumnPropNameInRow="СodeСategory" msprop:Generator_ColumnVarNameInTable="columnСodeСategory" type="xs:unsignedByte" />
+              <xs:element name="NameCategory" msprop:Generator_UserColumnName="NameCategory" msprop:Generator_ColumnPropNameInTable="NameCategoryColumn" msprop:Generator_ColumnPropNameInRow="NameCategory" msprop:Generator_ColumnVarNameInTable="columnNameCategory">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
@@ -807,21 +829,21 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DeleteProduct" msprop:Generator_RowEvHandlerName="DeleteProductRowChangeEventHandler" msprop:Generator_RowDeletedName="DeleteProductRowDeleted" msprop:Generator_RowDeletingName="DeleteProductRowDeleting" msprop:Generator_RowEvArgName="DeleteProductRowChangeEvent" msprop:Generator_TablePropName="DeleteProduct" msprop:Generator_RowChangedName="DeleteProductRowChanged" msprop:Generator_RowChangingName="DeleteProductRowChanging" msprop:Generator_TableClassName="DeleteProductDataTable" msprop:Generator_RowClassName="DeleteProductRow" msprop:Generator_TableVarName="tableDeleteProduct" msprop:Generator_UserTableName="DeleteProduct">
+        <xs:element name="DeleteProduct" msprop:Generator_RowClassName="DeleteProductRow" msprop:Generator_RowEvHandlerName="DeleteProductRowChangeEventHandler" msprop:Generator_RowDeletedName="DeleteProductRowDeleted" msprop:Generator_RowDeletingName="DeleteProductRowDeleting" msprop:Generator_RowEvArgName="DeleteProductRowChangeEvent" msprop:Generator_TablePropName="DeleteProduct" msprop:Generator_RowChangedName="DeleteProductRowChanged" msprop:Generator_UserTableName="DeleteProduct" msprop:Generator_RowChangingName="DeleteProductRowChanging" msprop:Generator_TableClassName="DeleteProductDataTable" msprop:Generator_TableVarName="tableDeleteProduct">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Ndelete" msprop:Generator_ColumnPropNameInRow="Ndelete" msprop:Generator_ColumnPropNameInTable="NdeleteColumn" msprop:Generator_ColumnVarNameInTable="columnNdelete" msprop:Generator_UserColumnName="Ndelete" type="xs:short" />
-              <xs:element name="OrderCode" msprop:Generator_ColumnPropNameInRow="OrderCode" msprop:Generator_ColumnPropNameInTable="OrderCodeColumn" msprop:Generator_ColumnVarNameInTable="columnOrderCode" msprop:Generator_UserColumnName="OrderCode" type="xs:int" />
-              <xs:element name="Barcode" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnVarNameInTable="columnBarcode" msprop:Generator_UserColumnName="Barcode">
+              <xs:element name="Ndelete" msprop:Generator_UserColumnName="Ndelete" msprop:Generator_ColumnPropNameInTable="NdeleteColumn" msprop:Generator_ColumnPropNameInRow="Ndelete" msprop:Generator_ColumnVarNameInTable="columnNdelete" type="xs:short" />
+              <xs:element name="OrderCode" msprop:Generator_UserColumnName="OrderCode" msprop:Generator_ColumnPropNameInTable="OrderCodeColumn" msprop:Generator_ColumnPropNameInRow="OrderCode" msprop:Generator_ColumnVarNameInTable="columnOrderCode" type="xs:int" />
+              <xs:element name="Barcode" msprop:Generator_UserColumnName="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnVarNameInTable="columnBarcode">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="13" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_UserColumnName="Quantity" type="xs:short" />
-              <xs:element name="DateDelete" msprop:Generator_ColumnPropNameInRow="DateDelete" msprop:Generator_ColumnPropNameInTable="DateDeleteColumn" msprop:Generator_ColumnVarNameInTable="columnDateDelete" msprop:Generator_UserColumnName="DateDelete" type="xs:dateTime" />
-              <xs:element name="WhyDelete" msprop:Generator_ColumnPropNameInRow="WhyDelete" msprop:Generator_ColumnPropNameInTable="WhyDeleteColumn" msprop:Generator_ColumnVarNameInTable="columnWhyDelete" msprop:Generator_UserColumnName="WhyDelete">
+              <xs:element name="Quantity" msprop:Generator_UserColumnName="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" type="xs:short" />
+              <xs:element name="DateDelete" msprop:Generator_UserColumnName="DateDelete" msprop:Generator_ColumnPropNameInTable="DateDeleteColumn" msprop:Generator_ColumnPropNameInRow="DateDelete" msprop:Generator_ColumnVarNameInTable="columnDateDelete" type="xs:dateTime" />
+              <xs:element name="WhyDelete" msprop:Generator_UserColumnName="WhyDelete" msprop:Generator_ColumnPropNameInTable="WhyDeleteColumn" msprop:Generator_ColumnPropNameInRow="WhyDelete" msprop:Generator_ColumnVarNameInTable="columnWhyDelete">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="60" />
@@ -831,83 +853,83 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Medicament" msprop:Generator_RowEvHandlerName="MedicamentRowChangeEventHandler" msprop:Generator_RowDeletedName="MedicamentRowDeleted" msprop:Generator_RowDeletingName="MedicamentRowDeleting" msprop:Generator_RowEvArgName="MedicamentRowChangeEvent" msprop:Generator_TablePropName="Medicament" msprop:Generator_RowChangedName="MedicamentRowChanged" msprop:Generator_RowChangingName="MedicamentRowChanging" msprop:Generator_TableClassName="MedicamentDataTable" msprop:Generator_RowClassName="MedicamentRow" msprop:Generator_TableVarName="tableMedicament" msprop:Generator_UserTableName="Medicament">
+        <xs:element name="Medicament" msprop:Generator_RowClassName="MedicamentRow" msprop:Generator_RowEvHandlerName="MedicamentRowChangeEventHandler" msprop:Generator_RowDeletedName="MedicamentRowDeleted" msprop:Generator_RowDeletingName="MedicamentRowDeleting" msprop:Generator_RowEvArgName="MedicamentRowChangeEvent" msprop:Generator_TablePropName="Medicament" msprop:Generator_RowChangedName="MedicamentRowChanged" msprop:Generator_UserTableName="Medicament" msprop:Generator_RowChangingName="MedicamentRowChanging" msprop:Generator_TableClassName="MedicamentDataTable" msprop:Generator_TableVarName="tableMedicament">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="СodeMedicament" msprop:Generator_ColumnPropNameInRow="СodeMedicament" msprop:Generator_ColumnPropNameInTable="СodeMedicamentColumn" msprop:Generator_ColumnVarNameInTable="columnСodeMedicament" msprop:Generator_UserColumnName="СodeMedicament" type="xs:short" />
-              <xs:element name="Barcode" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnVarNameInTable="columnBarcode" msprop:Generator_UserColumnName="Barcode">
+              <xs:element name="СodeMedicament" msprop:Generator_UserColumnName="СodeMedicament" msprop:Generator_ColumnPropNameInTable="СodeMedicamentColumn" msprop:Generator_ColumnPropNameInRow="СodeMedicament" msprop:Generator_ColumnVarNameInTable="columnСodeMedicament" type="xs:short" />
+              <xs:element name="Barcode" msprop:Generator_UserColumnName="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnVarNameInTable="columnBarcode">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="13" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PharmGroup" msprop:Generator_ColumnPropNameInRow="PharmGroup" msprop:Generator_ColumnPropNameInTable="PharmGroupColumn" msprop:Generator_ColumnVarNameInTable="columnPharmGroup" msprop:Generator_UserColumnName="PharmGroup" type="xs:unsignedByte" />
-              <xs:element name="Exp" msprop:Generator_ColumnPropNameInRow="Exp" msprop:Generator_ColumnPropNameInTable="ExpColumn" msprop:Generator_ColumnVarNameInTable="columnExp" msprop:Generator_UserColumnName="Exp">
+              <xs:element name="PharmGroup" msprop:Generator_UserColumnName="PharmGroup" msprop:Generator_ColumnPropNameInTable="PharmGroupColumn" msprop:Generator_ColumnPropNameInRow="PharmGroup" msprop:Generator_ColumnVarNameInTable="columnPharmGroup" type="xs:unsignedByte" />
+              <xs:element name="Exp" msprop:Generator_UserColumnName="Exp" msprop:Generator_ColumnPropNameInTable="ExpColumn" msprop:Generator_ColumnPropNameInRow="Exp" msprop:Generator_ColumnVarNameInTable="columnExp">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Notes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_UserColumnName="Notes" minOccurs="0">
+              <xs:element name="Notes" msprop:Generator_UserColumnName="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Effect" msprop:Generator_ColumnPropNameInRow="Effect" msprop:Generator_ColumnPropNameInTable="EffectColumn" msprop:Generator_ColumnVarNameInTable="columnEffect" msprop:Generator_UserColumnName="Effect" minOccurs="0">
+              <xs:element name="Effect" msprop:Generator_UserColumnName="Effect" msprop:Generator_ColumnPropNameInTable="EffectColumn" msprop:Generator_ColumnPropNameInRow="Effect" msprop:Generator_ColumnVarNameInTable="columnEffect" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ActiveSubstance" msprop:Generator_ColumnPropNameInRow="ActiveSubstance" msprop:Generator_ColumnPropNameInTable="ActiveSubstanceColumn" msprop:Generator_ColumnVarNameInTable="columnActiveSubstance" msprop:Generator_UserColumnName="ActiveSubstance">
+              <xs:element name="ActiveSubstance" msprop:Generator_UserColumnName="ActiveSubstance" msprop:Generator_ColumnPropNameInTable="ActiveSubstanceColumn" msprop:Generator_ColumnPropNameInRow="ActiveSubstance" msprop:Generator_ColumnVarNameInTable="columnActiveSubstance">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="70" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ReleaseForm" msprop:Generator_ColumnPropNameInRow="ReleaseForm" msprop:Generator_ColumnPropNameInTable="ReleaseFormColumn" msprop:Generator_ColumnVarNameInTable="columnReleaseForm" msprop:Generator_UserColumnName="ReleaseForm">
+              <xs:element name="ReleaseForm" msprop:Generator_UserColumnName="ReleaseForm" msprop:Generator_ColumnPropNameInTable="ReleaseFormColumn" msprop:Generator_ColumnPropNameInRow="ReleaseForm" msprop:Generator_ColumnVarNameInTable="columnReleaseForm">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="80" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Dosage" msprop:Generator_ColumnPropNameInRow="Dosage" msprop:Generator_ColumnPropNameInTable="DosageColumn" msprop:Generator_ColumnVarNameInTable="columnDosage" msprop:Generator_UserColumnName="Dosage" minOccurs="0">
+              <xs:element name="Dosage" msprop:Generator_UserColumnName="Dosage" msprop:Generator_ColumnPropNameInTable="DosageColumn" msprop:Generator_ColumnPropNameInRow="Dosage" msprop:Generator_ColumnVarNameInTable="columnDosage" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_UserColumnName="Quantity" type="xs:unsignedByte" minOccurs="0" />
-              <xs:element name="Volume" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_ColumnVarNameInTable="columnVolume" msprop:Generator_UserColumnName="Volume" minOccurs="0">
+              <xs:element name="Quantity" msprop:Generator_UserColumnName="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Volume" msprop:Generator_UserColumnName="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnVarNameInTable="columnVolume" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Composition" msprop:Generator_ColumnPropNameInRow="Composition" msprop:Generator_ColumnPropNameInTable="CompositionColumn" msprop:Generator_ColumnVarNameInTable="columnComposition" msprop:Generator_UserColumnName="Composition">
+              <xs:element name="Composition" msprop:Generator_UserColumnName="Composition" msprop:Generator_ColumnPropNameInTable="CompositionColumn" msprop:Generator_ColumnPropNameInRow="Composition" msprop:Generator_ColumnVarNameInTable="columnComposition">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="400" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Country" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_UserColumnName="Country" minOccurs="0">
+              <xs:element name="Country" msprop:Generator_UserColumnName="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Manufactur" msprop:Generator_ColumnPropNameInRow="Manufactur" msprop:Generator_ColumnPropNameInTable="ManufacturColumn" msprop:Generator_ColumnVarNameInTable="columnManufactur" msprop:Generator_UserColumnName="Manufactur">
+              <xs:element name="Manufactur" msprop:Generator_UserColumnName="Manufactur" msprop:Generator_ColumnPropNameInTable="ManufacturColumn" msprop:Generator_ColumnPropNameInRow="Manufactur" msprop:Generator_ColumnVarNameInTable="columnManufactur">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="70" />
@@ -917,7 +939,197 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Product" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_TablePropName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_RowClassName="ProductRow" msprop:Generator_TableVarName="tableProduct" msprop:Generator_UserTableName="Product">
+        <xs:element name="Product" msprop:Generator_RowClassName="ProductRow" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_TablePropName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_UserTableName="Product" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Barcode" msprop:Generator_UserColumnName="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnVarNameInTable="columnBarcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="СodeСategory" msprop:Generator_UserColumnName="СodeСategory" msprop:Generator_ColumnPropNameInTable="СodeСategoryColumn" msprop:Generator_ColumnPropNameInRow="СodeСategory" msprop:Generator_ColumnVarNameInTable="columnСodeСategory" type="xs:unsignedByte" />
+              <xs:element name="Brand" msprop:Generator_UserColumnName="Brand" msprop:Generator_ColumnPropNameInTable="BrandColumn" msprop:Generator_ColumnPropNameInRow="Brand" msprop:Generator_ColumnVarNameInTable="columnBrand">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameProduct" msprop:Generator_UserColumnName="NameProduct" msprop:Generator_ColumnPropNameInTable="NameProductColumn" msprop:Generator_ColumnPropNameInRow="NameProduct" msprop:Generator_ColumnVarNameInTable="columnNameProduct">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="170" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:decimal" />
+              <xs:element name="MinReserve" msprop:Generator_UserColumnName="MinReserve" msprop:Generator_ColumnPropNameInTable="MinReserveColumn" msprop:Generator_ColumnPropNameInRow="MinReserve" msprop:Generator_ColumnVarNameInTable="columnMinReserve" type="xs:short" minOccurs="0" />
+              <xs:element name="InStock" msprop:Generator_UserColumnName="InStock" msprop:Generator_ColumnPropNameInTable="InStockColumn" msprop:Generator_ColumnPropNameInRow="InStock" msprop:Generator_ColumnVarNameInTable="columnInStock" type="xs:short" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Purchase" msprop:Generator_RowClassName="PurchaseRow" msprop:Generator_RowEvHandlerName="PurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="PurchaseRowDeleted" msprop:Generator_RowDeletingName="PurchaseRowDeleting" msprop:Generator_RowEvArgName="PurchaseRowChangeEvent" msprop:Generator_TablePropName="Purchase" msprop:Generator_RowChangedName="PurchaseRowChanged" msprop:Generator_UserTableName="Purchase" msprop:Generator_RowChangingName="PurchaseRowChanging" msprop:Generator_TableClassName="PurchaseDataTable" msprop:Generator_TableVarName="tablePurchase">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OrderCode" msprop:Generator_UserColumnName="OrderCode" msprop:Generator_ColumnPropNameInTable="OrderCodeColumn" msprop:Generator_ColumnPropNameInRow="OrderCode" msprop:Generator_ColumnVarNameInTable="columnOrderCode" type="xs:int" />
+              <xs:element name="NOrder" msprop:Generator_UserColumnName="NOrder" msprop:Generator_ColumnPropNameInTable="NOrderColumn" msprop:Generator_ColumnPropNameInRow="NOrder" msprop:Generator_ColumnVarNameInTable="columnNOrder">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="СodePurv" msprop:Generator_UserColumnName="СodePurv" msprop:Generator_ColumnPropNameInTable="СodePurvColumn" msprop:Generator_ColumnPropNameInRow="СodePurv" msprop:Generator_ColumnVarNameInTable="columnСodePurv" type="xs:short" />
+              <xs:element name="id_sotr" msprop:Generator_UserColumnName="id_sotr" msprop:Generator_ColumnPropNameInTable="id_sotrColumn" msprop:Generator_ColumnPropNameInRow="id_sotr" msprop:Generator_ColumnVarNameInTable="columnid_sotr" type="xs:short" />
+              <xs:element name="DateExe" msprop:Generator_UserColumnName="DateExe" msprop:Generator_ColumnPropNameInTable="DateExeColumn" msprop:Generator_ColumnPropNameInRow="DateExe" msprop:Generator_ColumnVarNameInTable="columnDateExe" type="xs:dateTime" />
+              <xs:element name="DelivMethod" msprop:Generator_UserColumnName="DelivMethod" msprop:Generator_ColumnPropNameInTable="DelivMethodColumn" msprop:Generator_ColumnPropNameInRow="DelivMethod" msprop:Generator_ColumnVarNameInTable="columnDelivMethod">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DelivPrice" msprop:Generator_UserColumnName="DelivPrice" msprop:Generator_ColumnPropNameInTable="DelivPriceColumn" msprop:Generator_ColumnPropNameInRow="DelivPrice" msprop:Generator_ColumnVarNameInTable="columnDelivPrice" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Purveyor" msprop:Generator_RowClassName="PurveyorRow" msprop:Generator_RowEvHandlerName="PurveyorRowChangeEventHandler" msprop:Generator_RowDeletedName="PurveyorRowDeleted" msprop:Generator_RowDeletingName="PurveyorRowDeleting" msprop:Generator_RowEvArgName="PurveyorRowChangeEvent" msprop:Generator_TablePropName="Purveyor" msprop:Generator_RowChangedName="PurveyorRowChanged" msprop:Generator_UserTableName="Purveyor" msprop:Generator_RowChangingName="PurveyorRowChanging" msprop:Generator_TableClassName="PurveyorDataTable" msprop:Generator_TableVarName="tablePurveyor">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="СodePurveyor" msprop:Generator_UserColumnName="СodePurveyor" msprop:Generator_ColumnPropNameInTable="СodePurveyorColumn" msprop:Generator_ColumnPropNameInRow="СodePurveyor" msprop:Generator_ColumnVarNameInTable="columnСodePurveyor" type="xs:short" />
+              <xs:element name="NamePurveyor" msprop:Generator_UserColumnName="NamePurveyor" msprop:Generator_ColumnPropNameInTable="NamePurveyorColumn" msprop:Generator_ColumnPropNameInRow="NamePurveyor" msprop:Generator_ColumnVarNameInTable="columnNamePurveyor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ContactPerson" msprop:Generator_UserColumnName="ContactPerson" msprop:Generator_ColumnPropNameInTable="ContactPersonColumn" msprop:Generator_ColumnPropNameInRow="ContactPerson" msprop:Generator_ColumnVarNameInTable="columnContactPerson">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Country" msprop:Generator_UserColumnName="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnVarNameInTable="columnCountry">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sity" msprop:Generator_UserColumnName="Sity" msprop:Generator_ColumnPropNameInTable="SityColumn" msprop:Generator_ColumnPropNameInRow="Sity" msprop:Generator_ColumnVarNameInTable="columnSity">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Address" msprop:Generator_UserColumnName="Address" msprop:Generator_ColumnPropNameInTable="AddressColumn" msprop:Generator_ColumnPropNameInRow="Address" msprop:Generator_ColumnVarNameInTable="columnAddress">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PhoneNum" msprop:Generator_UserColumnName="PhoneNum" msprop:Generator_ColumnPropNameInTable="PhoneNumColumn" msprop:Generator_ColumnPropNameInRow="PhoneNum" msprop:Generator_ColumnVarNameInTable="columnPhoneNum">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TermsPay" msprop:Generator_UserColumnName="TermsPay" msprop:Generator_ColumnPropNameInTable="TermsPayColumn" msprop:Generator_ColumnPropNameInRow="TermsPay" msprop:Generator_ColumnVarNameInTable="columnTermsPay" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sell" msprop:Generator_RowClassName="SellRow" msprop:Generator_RowEvHandlerName="SellRowChangeEventHandler" msprop:Generator_RowDeletedName="SellRowDeleted" msprop:Generator_RowDeletingName="SellRowDeleting" msprop:Generator_RowEvArgName="SellRowChangeEvent" msprop:Generator_TablePropName="Sell" msprop:Generator_RowChangedName="SellRowChanged" msprop:Generator_UserTableName="Sell" msprop:Generator_RowChangingName="SellRowChanging" msprop:Generator_TableClassName="SellDataTable" msprop:Generator_TableVarName="tableSell">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nreceipt" msprop:Generator_UserColumnName="Nreceipt" msprop:Generator_ColumnPropNameInTable="NreceiptColumn" msprop:Generator_ColumnPropNameInRow="Nreceipt" msprop:Generator_ColumnVarNameInTable="columnNreceipt" type="xs:short" />
+              <xs:element name="id_sotr" msprop:Generator_UserColumnName="id_sotr" msprop:Generator_ColumnPropNameInTable="id_sotrColumn" msprop:Generator_ColumnPropNameInRow="id_sotr" msprop:Generator_ColumnVarNameInTable="columnid_sotr" type="xs:short" />
+              <xs:element name="DateSell" msprop:Generator_UserColumnName="DateSell" msprop:Generator_ColumnPropNameInTable="DateSellColumn" msprop:Generator_ColumnPropNameInRow="DateSell" msprop:Generator_ColumnVarNameInTable="columnDateSell" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sotr" msprop:Generator_RowClassName="SotrRow" msprop:Generator_RowEvHandlerName="SotrRowChangeEventHandler" msprop:Generator_RowDeletedName="SotrRowDeleted" msprop:Generator_RowDeletingName="SotrRowDeleting" msprop:Generator_RowEvArgName="SotrRowChangeEvent" msprop:Generator_TablePropName="Sotr" msprop:Generator_RowChangedName="SotrRowChanged" msprop:Generator_UserTableName="Sotr" msprop:Generator_RowChangingName="SotrRowChanging" msprop:Generator_TableClassName="SotrDataTable" msprop:Generator_TableVarName="tableSotr">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idSotr" msprop:Generator_UserColumnName="idSotr" msprop:Generator_ColumnPropNameInTable="idSotrColumn" msprop:Generator_ColumnPropNameInRow="idSotr" msprop:Generator_ColumnVarNameInTable="columnidSotr" type="xs:short" />
+              <xs:element name="Fio" msprop:Generator_UserColumnName="Fio" msprop:Generator_ColumnPropNameInTable="FioColumn" msprop:Generator_ColumnPropNameInRow="Fio" msprop:Generator_ColumnVarNameInTable="columnFio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Position" msprop:Generator_UserColumnName="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnVarNameInTable="columnPosition">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PhoneNum" msprop:Generator_UserColumnName="PhoneNum" msprop:Generator_ColumnPropNameInTable="PhoneNumColumn" msprop:Generator_ColumnPropNameInRow="PhoneNum" msprop:Generator_ColumnVarNameInTable="columnPhoneNum" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="StructPurchase" msprop:Generator_RowClassName="StructPurchaseRow" msprop:Generator_RowEvHandlerName="StructPurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="StructPurchaseRowDeleted" msprop:Generator_RowDeletingName="StructPurchaseRowDeleting" msprop:Generator_RowEvArgName="StructPurchaseRowChangeEvent" msprop:Generator_TablePropName="StructPurchase" msprop:Generator_RowChangedName="StructPurchaseRowChanged" msprop:Generator_UserTableName="StructPurchase" msprop:Generator_RowChangingName="StructPurchaseRowChanging" msprop:Generator_TableClassName="StructPurchaseDataTable" msprop:Generator_TableVarName="tableStructPurchase">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OrderCode" msprop:Generator_UserColumnName="OrderCode" msprop:Generator_ColumnPropNameInTable="OrderCodeColumn" msprop:Generator_ColumnPropNameInRow="OrderCode" msprop:Generator_ColumnVarNameInTable="columnOrderCode" type="xs:int" />
+              <xs:element name="Barcode" msprop:Generator_UserColumnName="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnVarNameInTable="columnBarcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ValidFor" msprop:Generator_UserColumnName="ValidFor" msprop:Generator_ColumnPropNameInTable="ValidForColumn" msprop:Generator_ColumnPropNameInRow="ValidFor" msprop:Generator_ColumnVarNameInTable="columnValidFor" type="xs:dateTime" />
+              <xs:element name="UnitPrice" msprop:Generator_UserColumnName="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" type="xs:decimal" />
+              <xs:element name="QuantityOrd" msprop:Generator_UserColumnName="QuantityOrd" msprop:Generator_ColumnPropNameInTable="QuantityOrdColumn" msprop:Generator_ColumnPropNameInRow="QuantityOrd" msprop:Generator_ColumnVarNameInTable="columnQuantityOrd" type="xs:short" />
+              <xs:element name="QuantityReceiv" msprop:Generator_UserColumnName="QuantityReceiv" msprop:Generator_ColumnPropNameInTable="QuantityReceivColumn" msprop:Generator_ColumnPropNameInRow="QuantityReceiv" msprop:Generator_ColumnVarNameInTable="columnQuantityReceiv" type="xs:short" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="StructSell" msprop:Generator_RowClassName="StructSellRow" msprop:Generator_RowEvHandlerName="StructSellRowChangeEventHandler" msprop:Generator_RowDeletedName="StructSellRowDeleted" msprop:Generator_RowDeletingName="StructSellRowDeleting" msprop:Generator_RowEvArgName="StructSellRowChangeEvent" msprop:Generator_TablePropName="StructSell" msprop:Generator_RowChangedName="StructSellRowChanged" msprop:Generator_UserTableName="StructSell" msprop:Generator_RowChangingName="StructSellRowChanging" msprop:Generator_TableClassName="StructSellDataTable" msprop:Generator_TableVarName="tableStructSell">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nrec" msprop:Generator_UserColumnName="Nrec" msprop:Generator_ColumnPropNameInTable="NrecColumn" msprop:Generator_ColumnPropNameInRow="Nrec" msprop:Generator_ColumnVarNameInTable="columnNrec" type="xs:short" />
+              <xs:element name="Barcode" msprop:Generator_UserColumnName="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnVarNameInTable="columnBarcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quantity" msprop:Generator_UserColumnName="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" type="xs:short" />
+              <xs:element name="TotalCost" msprop:Generator_UserColumnName="TotalCost" msprop:Generator_ColumnPropNameInTable="TotalCostColumn" msprop:Generator_ColumnPropNameInRow="TotalCost" msprop:Generator_ColumnVarNameInTable="columnTotalCost" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tableProduct" msprop:Generator_RowEvHandlerName="tableProductRowChangeEventHandler" msprop:Generator_RowDeletedName="tableProductRowDeleted" msprop:Generator_RowDeletingName="tableProductRowDeleting" msprop:Generator_RowEvArgName="tableProductRowChangeEvent" msprop:Generator_TablePropName="_tableProduct" msprop:Generator_RowChangedName="tableProductRowChanged" msprop:Generator_RowChangingName="tableProductRowChanging" msprop:Generator_TableClassName="tableProductDataTable" msprop:Generator_RowClassName="tableProductRow" msprop:Generator_TableVarName="tabletableProduct" msprop:Generator_UserTableName="tableProduct">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Barcode" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnVarNameInTable="columnBarcode" msprop:Generator_UserColumnName="Barcode">
@@ -927,7 +1139,13 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="СodeСategory" msprop:Generator_ColumnPropNameInRow="СodeСategory" msprop:Generator_ColumnPropNameInTable="СodeСategoryColumn" msprop:Generator_ColumnVarNameInTable="columnСodeСategory" msprop:Generator_UserColumnName="СodeСategory" type="xs:unsignedByte" />
+              <xs:element name="NameCategory" msprop:Generator_ColumnPropNameInRow="NameCategory" msprop:Generator_ColumnPropNameInTable="NameCategoryColumn" msprop:Generator_ColumnVarNameInTable="columnNameCategory" msprop:Generator_UserColumnName="NameCategory">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="Brand" msprop:Generator_ColumnPropNameInRow="Brand" msprop:Generator_ColumnPropNameInTable="BrandColumn" msprop:Generator_ColumnVarNameInTable="columnBrand" msprop:Generator_UserColumnName="Brand">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -945,165 +1163,6 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
               <xs:element name="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_UserColumnName="Price" type="xs:decimal" />
               <xs:element name="MinReserve" msprop:Generator_ColumnPropNameInRow="MinReserve" msprop:Generator_ColumnPropNameInTable="MinReserveColumn" msprop:Generator_ColumnVarNameInTable="columnMinReserve" msprop:Generator_UserColumnName="MinReserve" type="xs:short" minOccurs="0" />
               <xs:element name="InStock" msprop:Generator_ColumnPropNameInRow="InStock" msprop:Generator_ColumnPropNameInTable="InStockColumn" msprop:Generator_ColumnVarNameInTable="columnInStock" msprop:Generator_UserColumnName="InStock" type="xs:short" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Purchase" msprop:Generator_RowEvHandlerName="PurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="PurchaseRowDeleted" msprop:Generator_RowDeletingName="PurchaseRowDeleting" msprop:Generator_RowEvArgName="PurchaseRowChangeEvent" msprop:Generator_TablePropName="Purchase" msprop:Generator_RowChangedName="PurchaseRowChanged" msprop:Generator_RowChangingName="PurchaseRowChanging" msprop:Generator_TableClassName="PurchaseDataTable" msprop:Generator_RowClassName="PurchaseRow" msprop:Generator_TableVarName="tablePurchase" msprop:Generator_UserTableName="Purchase">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="OrderCode" msprop:Generator_ColumnPropNameInRow="OrderCode" msprop:Generator_ColumnPropNameInTable="OrderCodeColumn" msprop:Generator_ColumnVarNameInTable="columnOrderCode" msprop:Generator_UserColumnName="OrderCode" type="xs:int" />
-              <xs:element name="NOrder" msprop:Generator_ColumnPropNameInRow="NOrder" msprop:Generator_ColumnPropNameInTable="NOrderColumn" msprop:Generator_ColumnVarNameInTable="columnNOrder" msprop:Generator_UserColumnName="NOrder">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="СodePurv" msprop:Generator_ColumnPropNameInRow="СodePurv" msprop:Generator_ColumnPropNameInTable="СodePurvColumn" msprop:Generator_ColumnVarNameInTable="columnСodePurv" msprop:Generator_UserColumnName="СodePurv" type="xs:short" />
-              <xs:element name="id_sotr" msprop:Generator_ColumnPropNameInRow="id_sotr" msprop:Generator_ColumnPropNameInTable="id_sotrColumn" msprop:Generator_ColumnVarNameInTable="columnid_sotr" msprop:Generator_UserColumnName="id_sotr" type="xs:short" />
-              <xs:element name="DateExe" msprop:Generator_ColumnPropNameInRow="DateExe" msprop:Generator_ColumnPropNameInTable="DateExeColumn" msprop:Generator_ColumnVarNameInTable="columnDateExe" msprop:Generator_UserColumnName="DateExe" type="xs:dateTime" />
-              <xs:element name="DelivMethod" msprop:Generator_ColumnPropNameInRow="DelivMethod" msprop:Generator_ColumnPropNameInTable="DelivMethodColumn" msprop:Generator_ColumnVarNameInTable="columnDelivMethod" msprop:Generator_UserColumnName="DelivMethod">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="DelivPrice" msprop:Generator_ColumnPropNameInRow="DelivPrice" msprop:Generator_ColumnPropNameInTable="DelivPriceColumn" msprop:Generator_ColumnVarNameInTable="columnDelivPrice" msprop:Generator_UserColumnName="DelivPrice" type="xs:decimal" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Purveyor" msprop:Generator_RowEvHandlerName="PurveyorRowChangeEventHandler" msprop:Generator_RowDeletedName="PurveyorRowDeleted" msprop:Generator_RowDeletingName="PurveyorRowDeleting" msprop:Generator_RowEvArgName="PurveyorRowChangeEvent" msprop:Generator_TablePropName="Purveyor" msprop:Generator_RowChangedName="PurveyorRowChanged" msprop:Generator_RowChangingName="PurveyorRowChanging" msprop:Generator_TableClassName="PurveyorDataTable" msprop:Generator_RowClassName="PurveyorRow" msprop:Generator_TableVarName="tablePurveyor" msprop:Generator_UserTableName="Purveyor">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="СodePurveyor" msprop:Generator_ColumnPropNameInRow="СodePurveyor" msprop:Generator_ColumnPropNameInTable="СodePurveyorColumn" msprop:Generator_ColumnVarNameInTable="columnСodePurveyor" msprop:Generator_UserColumnName="СodePurveyor" type="xs:short" />
-              <xs:element name="NamePurveyor" msprop:Generator_ColumnPropNameInRow="NamePurveyor" msprop:Generator_ColumnPropNameInTable="NamePurveyorColumn" msprop:Generator_ColumnVarNameInTable="columnNamePurveyor" msprop:Generator_UserColumnName="NamePurveyor">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ContactPerson" msprop:Generator_ColumnPropNameInRow="ContactPerson" msprop:Generator_ColumnPropNameInTable="ContactPersonColumn" msprop:Generator_ColumnVarNameInTable="columnContactPerson" msprop:Generator_UserColumnName="ContactPerson">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Country" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_UserColumnName="Country">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Sity" msprop:Generator_ColumnPropNameInRow="Sity" msprop:Generator_ColumnPropNameInTable="SityColumn" msprop:Generator_ColumnVarNameInTable="columnSity" msprop:Generator_UserColumnName="Sity">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Address" msprop:Generator_ColumnPropNameInRow="Address" msprop:Generator_ColumnPropNameInTable="AddressColumn" msprop:Generator_ColumnVarNameInTable="columnAddress" msprop:Generator_UserColumnName="Address">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PhoneNum" msprop:Generator_ColumnPropNameInRow="PhoneNum" msprop:Generator_ColumnPropNameInTable="PhoneNumColumn" msprop:Generator_ColumnVarNameInTable="columnPhoneNum" msprop:Generator_UserColumnName="PhoneNum">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TermsPay" msprop:Generator_ColumnPropNameInRow="TermsPay" msprop:Generator_ColumnPropNameInTable="TermsPayColumn" msprop:Generator_ColumnVarNameInTable="columnTermsPay" msprop:Generator_UserColumnName="TermsPay" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Sell" msprop:Generator_RowEvHandlerName="SellRowChangeEventHandler" msprop:Generator_RowDeletedName="SellRowDeleted" msprop:Generator_RowDeletingName="SellRowDeleting" msprop:Generator_RowEvArgName="SellRowChangeEvent" msprop:Generator_TablePropName="Sell" msprop:Generator_RowChangedName="SellRowChanged" msprop:Generator_RowChangingName="SellRowChanging" msprop:Generator_TableClassName="SellDataTable" msprop:Generator_RowClassName="SellRow" msprop:Generator_TableVarName="tableSell" msprop:Generator_UserTableName="Sell">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Nreceipt" msprop:Generator_ColumnPropNameInRow="Nreceipt" msprop:Generator_ColumnPropNameInTable="NreceiptColumn" msprop:Generator_ColumnVarNameInTable="columnNreceipt" msprop:Generator_UserColumnName="Nreceipt" type="xs:short" />
-              <xs:element name="id_sotr" msprop:Generator_ColumnPropNameInRow="id_sotr" msprop:Generator_ColumnPropNameInTable="id_sotrColumn" msprop:Generator_ColumnVarNameInTable="columnid_sotr" msprop:Generator_UserColumnName="id_sotr" type="xs:short" />
-              <xs:element name="DateSell" msprop:Generator_ColumnPropNameInRow="DateSell" msprop:Generator_ColumnPropNameInTable="DateSellColumn" msprop:Generator_ColumnVarNameInTable="columnDateSell" msprop:Generator_UserColumnName="DateSell" type="xs:dateTime" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Sotr" msprop:Generator_RowEvHandlerName="SotrRowChangeEventHandler" msprop:Generator_RowDeletedName="SotrRowDeleted" msprop:Generator_RowDeletingName="SotrRowDeleting" msprop:Generator_RowEvArgName="SotrRowChangeEvent" msprop:Generator_TablePropName="Sotr" msprop:Generator_RowChangedName="SotrRowChanged" msprop:Generator_RowChangingName="SotrRowChanging" msprop:Generator_TableClassName="SotrDataTable" msprop:Generator_RowClassName="SotrRow" msprop:Generator_TableVarName="tableSotr" msprop:Generator_UserTableName="Sotr">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="idSotr" msprop:Generator_ColumnPropNameInRow="idSotr" msprop:Generator_ColumnPropNameInTable="idSotrColumn" msprop:Generator_ColumnVarNameInTable="columnidSotr" msprop:Generator_UserColumnName="idSotr" type="xs:short" />
-              <xs:element name="Fio" msprop:Generator_ColumnPropNameInRow="Fio" msprop:Generator_ColumnPropNameInTable="FioColumn" msprop:Generator_ColumnVarNameInTable="columnFio" msprop:Generator_UserColumnName="Fio">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="60" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Position" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnVarNameInTable="columnPosition" msprop:Generator_UserColumnName="Position">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="40" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_UserColumnName="Email" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PhoneNum" msprop:Generator_ColumnPropNameInRow="PhoneNum" msprop:Generator_ColumnPropNameInTable="PhoneNumColumn" msprop:Generator_ColumnVarNameInTable="columnPhoneNum" msprop:Generator_UserColumnName="PhoneNum" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="StructPurchase" msprop:Generator_RowEvHandlerName="StructPurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="StructPurchaseRowDeleted" msprop:Generator_RowDeletingName="StructPurchaseRowDeleting" msprop:Generator_RowEvArgName="StructPurchaseRowChangeEvent" msprop:Generator_TablePropName="StructPurchase" msprop:Generator_RowChangedName="StructPurchaseRowChanged" msprop:Generator_RowChangingName="StructPurchaseRowChanging" msprop:Generator_TableClassName="StructPurchaseDataTable" msprop:Generator_RowClassName="StructPurchaseRow" msprop:Generator_TableVarName="tableStructPurchase" msprop:Generator_UserTableName="StructPurchase">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="OrderCode" msprop:Generator_ColumnPropNameInRow="OrderCode" msprop:Generator_ColumnPropNameInTable="OrderCodeColumn" msprop:Generator_ColumnVarNameInTable="columnOrderCode" msprop:Generator_UserColumnName="OrderCode" type="xs:int" />
-              <xs:element name="Barcode" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnVarNameInTable="columnBarcode" msprop:Generator_UserColumnName="Barcode">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="13" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ValidFor" msprop:Generator_ColumnPropNameInRow="ValidFor" msprop:Generator_ColumnPropNameInTable="ValidForColumn" msprop:Generator_ColumnVarNameInTable="columnValidFor" msprop:Generator_UserColumnName="ValidFor" type="xs:dateTime" />
-              <xs:element name="UnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" />
-              <xs:element name="QuantityOrd" msprop:Generator_ColumnPropNameInRow="QuantityOrd" msprop:Generator_ColumnPropNameInTable="QuantityOrdColumn" msprop:Generator_ColumnVarNameInTable="columnQuantityOrd" msprop:Generator_UserColumnName="QuantityOrd" type="xs:short" />
-              <xs:element name="QuantityReceiv" msprop:Generator_ColumnPropNameInRow="QuantityReceiv" msprop:Generator_ColumnPropNameInTable="QuantityReceivColumn" msprop:Generator_ColumnVarNameInTable="columnQuantityReceiv" msprop:Generator_UserColumnName="QuantityReceiv" type="xs:short" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="StructSell" msprop:Generator_RowEvHandlerName="StructSellRowChangeEventHandler" msprop:Generator_RowDeletedName="StructSellRowDeleted" msprop:Generator_RowDeletingName="StructSellRowDeleting" msprop:Generator_RowEvArgName="StructSellRowChangeEvent" msprop:Generator_TablePropName="StructSell" msprop:Generator_RowChangedName="StructSellRowChanged" msprop:Generator_RowChangingName="StructSellRowChanging" msprop:Generator_TableClassName="StructSellDataTable" msprop:Generator_RowClassName="StructSellRow" msprop:Generator_TableVarName="tableStructSell" msprop:Generator_UserTableName="StructSell">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Nrec" msprop:Generator_ColumnPropNameInRow="Nrec" msprop:Generator_ColumnPropNameInTable="NrecColumn" msprop:Generator_ColumnVarNameInTable="columnNrec" msprop:Generator_UserColumnName="Nrec" type="xs:short" />
-              <xs:element name="Barcode" msprop:Generator_ColumnPropNameInRow="Barcode" msprop:Generator_ColumnPropNameInTable="BarcodeColumn" msprop:Generator_ColumnVarNameInTable="columnBarcode" msprop:Generator_UserColumnName="Barcode">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="13" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_UserColumnName="Quantity" type="xs:short" />
-              <xs:element name="TotalCost" msprop:Generator_ColumnPropNameInRow="TotalCost" msprop:Generator_ColumnPropNameInTable="TotalCostColumn" msprop:Generator_ColumnVarNameInTable="columnTotalCost" msprop:Generator_UserColumnName="TotalCost" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1156,23 +1215,27 @@ SELECT Nrec, Barcode, Quantity, TotalCost FROM StructSell WHERE (Barcode = @Barc
       <xs:field xpath="mstns:Nrec" />
       <xs:field xpath="mstns:Barcode" />
     </xs:unique>
+    <xs:unique name="tableProduct_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tableProduct" />
+      <xs:field xpath="mstns:Barcode" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__Analog__id_Prod__5070F446" msdata:parent="Product" msdata:child="Analog" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="Analog" msprop:Generator_RelationVarName="relationFK__Analog__id_Prod__5070F446" msprop:Generator_UserRelationName="FK__Analog__id_Prod__5070F446" msprop:Generator_ChildPropName="GetAnalogRowsByFK__Analog__id_Prod__5070F446" msprop:Generator_ParentPropName="ProductRowByFK__Analog__id_Prod__5070F446" />
-      <msdata:Relationship name="FK__Analog__id_ProdA__5165187F" msdata:parent="Product" msdata:child="Analog" msdata:parentkey="Barcode" msdata:childkey="BarcodeAnalog" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="Analog" msprop:Generator_RelationVarName="relationFK__Analog__id_ProdA__5165187F" msprop:Generator_UserRelationName="FK__Analog__id_ProdA__5165187F" msprop:Generator_ChildPropName="GetAnalogRowsByFK__Analog__id_ProdA__5165187F" msprop:Generator_ParentPropName="ProductRowByFK__Analog__id_ProdA__5165187F" />
-      <msdata:Relationship name="FK_DeleteProduct_Product" msdata:parent="Product" msdata:child="DeleteProduct" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="DeleteProduct" msprop:Generator_RelationVarName="relationFK_DeleteProduct_Product" msprop:Generator_UserRelationName="FK_DeleteProduct_Product" msprop:Generator_ChildPropName="GetDeleteProductRows" msprop:Generator_ParentPropName="ProductRow" />
-      <msdata:Relationship name="FK_DeleteProduct_Purchase" msdata:parent="Purchase" msdata:child="DeleteProduct" msdata:parentkey="OrderCode" msdata:childkey="OrderCode" msprop:Generator_UserParentTable="Purchase" msprop:Generator_UserChildTable="DeleteProduct" msprop:Generator_RelationVarName="relationFK_DeleteProduct_Purchase" msprop:Generator_UserRelationName="FK_DeleteProduct_Purchase" msprop:Generator_ChildPropName="GetDeleteProductRows" msprop:Generator_ParentPropName="PurchaseRow" />
-      <msdata:Relationship name="FK_Medicament_Category" msdata:parent="Category" msdata:child="Medicament" msdata:parentkey="СodeСategory" msdata:childkey="PharmGroup" msprop:Generator_UserParentTable="Category" msprop:Generator_UserChildTable="Medicament" msprop:Generator_RelationVarName="relationFK_Medicament_Category" msprop:Generator_ChildPropName="GetMedicamentRows" msprop:Generator_ParentPropName="CategoryRow" msprop:Generator_UserRelationName="FK_Medicament_Category" />
-      <msdata:Relationship name="FK_Medicament_Product" msdata:parent="Product" msdata:child="Medicament" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="Medicament" msprop:Generator_RelationVarName="relationFK_Medicament_Product" msprop:Generator_UserRelationName="FK_Medicament_Product" msprop:Generator_ChildPropName="GetMedicamentRows" msprop:Generator_ParentPropName="ProductRow" />
-      <msdata:Relationship name="FK_Product_Category" msdata:parent="Category" msdata:child="Product" msdata:parentkey="СodeСategory" msdata:childkey="СodeСategory" msprop:Generator_UserParentTable="Category" msprop:Generator_UserChildTable="Product" msprop:Generator_RelationVarName="relationFK_Product_Category" msprop:Generator_ChildPropName="GetProductRows" msprop:Generator_ParentPropName="CategoryRow" msprop:Generator_UserRelationName="FK_Product_Category" />
-      <msdata:Relationship name="FK__Purchase__id_Sot__571DF1D5" msdata:parent="Sotr" msdata:child="Purchase" msdata:parentkey="idSotr" msdata:childkey="id_sotr" msprop:Generator_UserParentTable="Sotr" msprop:Generator_UserChildTable="Purchase" msprop:Generator_RelationVarName="relationFK__Purchase__id_Sot__571DF1D5" msprop:Generator_UserRelationName="FK__Purchase__id_Sot__571DF1D5" msprop:Generator_ChildPropName="GetPurchaseRows" msprop:Generator_ParentPropName="SotrRow" />
-      <msdata:Relationship name="FK__Purchase__СodePu__5812160E" msdata:parent="Purveyor" msdata:child="Purchase" msdata:parentkey="СodePurveyor" msdata:childkey="СodePurv" msprop:Generator_UserParentTable="Purveyor" msprop:Generator_UserChildTable="Purchase" msprop:Generator_RelationVarName="relationFK__Purchase__СodePu__5812160E" msprop:Generator_UserRelationName="FK__Purchase__СodePu__5812160E" msprop:Generator_ChildPropName="GetPurchaseRows" msprop:Generator_ParentPropName="PurveyorRow" />
-      <msdata:Relationship name="FK__Sell__id_Sotr__59063A47" msdata:parent="Sotr" msdata:child="Sell" msdata:parentkey="idSotr" msdata:childkey="id_sotr" msprop:Generator_UserParentTable="Sotr" msprop:Generator_UserChildTable="Sell" msprop:Generator_RelationVarName="relationFK__Sell__id_Sotr__59063A47" msprop:Generator_UserRelationName="FK__Sell__id_Sotr__59063A47" msprop:Generator_ChildPropName="GetSellRows" msprop:Generator_ParentPropName="SotrRow" />
-      <msdata:Relationship name="FK__StructPur__id_Pr__59FA5E80" msdata:parent="Product" msdata:child="StructPurchase" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="StructPurchase" msprop:Generator_RelationVarName="relationFK__StructPur__id_Pr__59FA5E80" msprop:Generator_ChildPropName="GetStructPurchaseRows" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_UserRelationName="FK__StructPur__id_Pr__59FA5E80" />
-      <msdata:Relationship name="FK__StructPur__Order__5AEE82B9" msdata:parent="Purchase" msdata:child="StructPurchase" msdata:parentkey="OrderCode" msdata:childkey="OrderCode" msprop:Generator_UserParentTable="Purchase" msprop:Generator_UserChildTable="StructPurchase" msprop:Generator_RelationVarName="relationFK__StructPur__Order__5AEE82B9" msprop:Generator_ChildPropName="GetStructPurchaseRows" msprop:Generator_ParentPropName="PurchaseRow" msprop:Generator_UserRelationName="FK__StructPur__Order__5AEE82B9" />
-      <msdata:Relationship name="FK__StructSel__id_Pr__5BE2A6F2" msdata:parent="Product" msdata:child="StructSell" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="StructSell" msprop:Generator_RelationVarName="relationFK__StructSel__id_Pr__5BE2A6F2" msprop:Generator_ChildPropName="GetStructSellRows" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_UserRelationName="FK__StructSel__id_Pr__5BE2A6F2" />
-      <msdata:Relationship name="FK__StructSell__Nrec__5CD6CB2B" msdata:parent="Sell" msdata:child="StructSell" msdata:parentkey="Nreceipt" msdata:childkey="Nrec" msprop:Generator_UserParentTable="Sell" msprop:Generator_UserChildTable="StructSell" msprop:Generator_RelationVarName="relationFK__StructSell__Nrec__5CD6CB2B" msprop:Generator_ChildPropName="GetStructSellRows" msprop:Generator_ParentPropName="SellRow" msprop:Generator_UserRelationName="FK__StructSell__Nrec__5CD6CB2B" />
+      <msdata:Relationship name="FK__Analog__id_Prod__5070F446" msdata:parent="Product" msdata:child="Analog" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="Analog" msprop:Generator_RelationVarName="relationFK__Analog__id_Prod__5070F446" msprop:Generator_ChildPropName="GetAnalogRowsByFK__Analog__id_Prod__5070F446" msprop:Generator_ParentPropName="ProductRowByFK__Analog__id_Prod__5070F446" msprop:Generator_UserRelationName="FK__Analog__id_Prod__5070F446" />
+      <msdata:Relationship name="FK__Analog__id_ProdA__5165187F" msdata:parent="Product" msdata:child="Analog" msdata:parentkey="Barcode" msdata:childkey="BarcodeAnalog" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="Analog" msprop:Generator_RelationVarName="relationFK__Analog__id_ProdA__5165187F" msprop:Generator_ChildPropName="GetAnalogRowsByFK__Analog__id_ProdA__5165187F" msprop:Generator_ParentPropName="ProductRowByFK__Analog__id_ProdA__5165187F" msprop:Generator_UserRelationName="FK__Analog__id_ProdA__5165187F" />
+      <msdata:Relationship name="FK_DeleteProduct_Product" msdata:parent="Product" msdata:child="DeleteProduct" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="DeleteProduct" msprop:Generator_RelationVarName="relationFK_DeleteProduct_Product" msprop:Generator_ChildPropName="GetDeleteProductRows" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_UserRelationName="FK_DeleteProduct_Product" />
+      <msdata:Relationship name="FK_DeleteProduct_Purchase" msdata:parent="Purchase" msdata:child="DeleteProduct" msdata:parentkey="OrderCode" msdata:childkey="OrderCode" msprop:Generator_UserParentTable="Purchase" msprop:Generator_UserChildTable="DeleteProduct" msprop:Generator_RelationVarName="relationFK_DeleteProduct_Purchase" msprop:Generator_ChildPropName="GetDeleteProductRows" msprop:Generator_ParentPropName="PurchaseRow" msprop:Generator_UserRelationName="FK_DeleteProduct_Purchase" />
+      <msdata:Relationship name="FK_Medicament_Category" msdata:parent="Category" msdata:child="Medicament" msdata:parentkey="СodeСategory" msdata:childkey="PharmGroup" msprop:Generator_UserParentTable="Category" msprop:Generator_UserChildTable="Medicament" msprop:Generator_RelationVarName="relationFK_Medicament_Category" msprop:Generator_ChildPropName="GetMedicamentRows" msprop:Generator_UserRelationName="FK_Medicament_Category" msprop:Generator_ParentPropName="CategoryRow" />
+      <msdata:Relationship name="FK_Medicament_Product" msdata:parent="Product" msdata:child="Medicament" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="Medicament" msprop:Generator_RelationVarName="relationFK_Medicament_Product" msprop:Generator_ChildPropName="GetMedicamentRows" msprop:Generator_ParentPropName="ProductRow" msprop:Generator_UserRelationName="FK_Medicament_Product" />
+      <msdata:Relationship name="FK_Product_Category" msdata:parent="Category" msdata:child="Product" msdata:parentkey="СodeСategory" msdata:childkey="СodeСategory" msprop:Generator_UserParentTable="Category" msprop:Generator_UserChildTable="Product" msprop:Generator_RelationVarName="relationFK_Product_Category" msprop:Generator_ChildPropName="GetProductRows" msprop:Generator_UserRelationName="FK_Product_Category" msprop:Generator_ParentPropName="CategoryRow" />
+      <msdata:Relationship name="FK__Purchase__id_Sot__571DF1D5" msdata:parent="Sotr" msdata:child="Purchase" msdata:parentkey="idSotr" msdata:childkey="id_sotr" msprop:Generator_UserParentTable="Sotr" msprop:Generator_UserChildTable="Purchase" msprop:Generator_RelationVarName="relationFK__Purchase__id_Sot__571DF1D5" msprop:Generator_ChildPropName="GetPurchaseRows" msprop:Generator_ParentPropName="SotrRow" msprop:Generator_UserRelationName="FK__Purchase__id_Sot__571DF1D5" />
+      <msdata:Relationship name="FK__Purchase__СodePu__5812160E" msdata:parent="Purveyor" msdata:child="Purchase" msdata:parentkey="СodePurveyor" msdata:childkey="СodePurv" msprop:Generator_UserParentTable="Purveyor" msprop:Generator_UserChildTable="Purchase" msprop:Generator_RelationVarName="relationFK__Purchase__СodePu__5812160E" msprop:Generator_ChildPropName="GetPurchaseRows" msprop:Generator_ParentPropName="PurveyorRow" msprop:Generator_UserRelationName="FK__Purchase__СodePu__5812160E" />
+      <msdata:Relationship name="FK__Sell__id_Sotr__59063A47" msdata:parent="Sotr" msdata:child="Sell" msdata:parentkey="idSotr" msdata:childkey="id_sotr" msprop:Generator_UserParentTable="Sotr" msprop:Generator_UserChildTable="Sell" msprop:Generator_RelationVarName="relationFK__Sell__id_Sotr__59063A47" msprop:Generator_ChildPropName="GetSellRows" msprop:Generator_ParentPropName="SotrRow" msprop:Generator_UserRelationName="FK__Sell__id_Sotr__59063A47" />
+      <msdata:Relationship name="FK__StructPur__id_Pr__59FA5E80" msdata:parent="Product" msdata:child="StructPurchase" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="StructPurchase" msprop:Generator_RelationVarName="relationFK__StructPur__id_Pr__59FA5E80" msprop:Generator_ChildPropName="GetStructPurchaseRows" msprop:Generator_UserRelationName="FK__StructPur__id_Pr__59FA5E80" msprop:Generator_ParentPropName="ProductRow" />
+      <msdata:Relationship name="FK__StructPur__Order__5AEE82B9" msdata:parent="Purchase" msdata:child="StructPurchase" msdata:parentkey="OrderCode" msdata:childkey="OrderCode" msprop:Generator_UserParentTable="Purchase" msprop:Generator_UserChildTable="StructPurchase" msprop:Generator_RelationVarName="relationFK__StructPur__Order__5AEE82B9" msprop:Generator_ChildPropName="GetStructPurchaseRows" msprop:Generator_UserRelationName="FK__StructPur__Order__5AEE82B9" msprop:Generator_ParentPropName="PurchaseRow" />
+      <msdata:Relationship name="FK__StructSel__id_Pr__5BE2A6F2" msdata:parent="Product" msdata:child="StructSell" msdata:parentkey="Barcode" msdata:childkey="Barcode" msprop:Generator_UserParentTable="Product" msprop:Generator_UserChildTable="StructSell" msprop:Generator_RelationVarName="relationFK__StructSel__id_Pr__5BE2A6F2" msprop:Generator_ChildPropName="GetStructSellRows" msprop:Generator_UserRelationName="FK__StructSel__id_Pr__5BE2A6F2" msprop:Generator_ParentPropName="ProductRow" />
+      <msdata:Relationship name="FK__StructSell__Nrec__5CD6CB2B" msdata:parent="Sell" msdata:child="StructSell" msdata:parentkey="Nreceipt" msdata:childkey="Nrec" msprop:Generator_UserParentTable="Sell" msprop:Generator_UserChildTable="StructSell" msprop:Generator_RelationVarName="relationFK__StructSell__Nrec__5CD6CB2B" msprop:Generator_ChildPropName="GetStructSellRows" msprop:Generator_UserRelationName="FK__StructSell__Nrec__5CD6CB2B" msprop:Generator_ParentPropName="SellRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

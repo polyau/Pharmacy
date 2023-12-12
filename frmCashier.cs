@@ -23,6 +23,8 @@ namespace Pharmacy
 
         private void frmCashier_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet._tableProduct". При необходимости она может быть перемещена или удалена.
+            this.tableProductTableAdapter.Fill(this.pharmacyDataSet._tableProduct);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Sotr". При необходимости она может быть перемещена или удалена.
             this.sotrTableAdapter.Fill(this.pharmacyDataSet.Sotr);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Product". При необходимости она может быть перемещена или удалена.
@@ -34,22 +36,28 @@ namespace Pharmacy
 
         }
 
+        private void ClearInsert(object sender, EventArgs e)
+        {
+            txtFind.Text = "";
+        }
+
         private void btnReset_Click(object sender, EventArgs e)
         {
-            productBindingSource.Filter = "";
+            tableProductBindingSource.Filter = "";
+            ClearInsert(sender, e);
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            productBindingSource.Filter = "NameProduct Like '" + "%" + txtFind.Text + "%'";
+            tableProductBindingSource.Filter = "NameProduct Like '" + "%" + txtFind.Text
+            + "%' OR Brand Like '%" + "%" + txtFind.Text + "%"
+            + "%' OR NameCategory Like '%" + "%" + txtFind.Text + "%'";
         }
 
         private void btnFindAnalog_Click(object sender, EventArgs e)
         {
             Form frm = new frmAnalogs();
             frm.Show();
-
-
             //    if (tblProduct.SelectedRows.Count == 1)
             //   {
             /*      int selectedIndex = tblProduct.SelectedRows[0].Index;
@@ -72,8 +80,6 @@ namespace Pharmacy
                       }*/
 
             //    }
-
-
 
             /*   long selectedIndex = tblProduct.SelectedRows[0].Index;
                long Barcode = Convert.ToLong(tblProduct[0, selectedIndex].Value);
@@ -117,96 +123,28 @@ namespace Pharmacy
         }
 
         private void btnAddToCart_Click(object sender, EventArgs e)
-        {/*
-            private void button13_Click(object sender, EventArgs e)
-            {
-                try
-                {
-                    if (sqlConnection.State == ConnectionState.Closed)
-                    {
-                        sqlConnection.Open();
-                    }
-                    SqlCommand getIdtrash = new SqlCommand("select Top 1 id_заказа from СоставЗаказа order by id_заказа desc", connection);
-                   
-                    SqlCommand getIdorder = new SqlCommand("select Top 1 id_заказа from Заказ order by id_заказа desc", connection);
-                   
-                    SqlDataReader rdr, drd;
-                    rdr = getIdtrash.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        int totalOrders;
-                        int.TryParse(rdr["id_заказа"].ToString(), out totalOrders);
-                        orderInTrash = totalOrders;
-                    }
-                    rdr.Close();
-                    drd = getIdorder.ExecuteReader();
-                    while (drd.Read())
-                    {
-                        int totalOrders;
-                        int.TryParse(drd["id_заказа"].ToString(), out totalOrders);
-                        orderInOrder = totalOrders;
-                    }
-                    drd.Close();
-                    try
-                    {
-                        SqlCommand cmd = new SqlCommand("addOrder", sqlConnection);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@mode", "add");
-                        cmd.Parameters.AddWithValue("@id_заказа", id_заказаTextBox.Text);
-                        cmd.Parameters.AddWithValue("@id_препарата", id_препаратаtextBox4.Text);
-                        cmd.Parameters.AddWithValue("@количество", количествоNumericUpDown.Value);
-                        cmd.ExecuteNonQuery();
-                        корзина_покупокDataGridView.DataSource = pharmacyDataSet.Корзина_покупок;
-                        препаратTableAdapter.Fill(pharmacyDataSet.Product);
-                        корзина_покупокTableAdapter.Fill(pharmacyDataSet.Корзина_покупок);
-                        sumOrder();
-                        label6.Visible = false;
-                        if (id_препаратаtextBox4.Text != "")
-                        {
-                            MessageBox.Show("Препарат добавлен в корзину");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Выберите товар!");
-                        }
-                        id_препаратаtextBox4.Text = "";
-                        textBox5.Text = "";
-                    }
+        {
+            /* // Получаем выделенную строку из DataGridView с товарами
+             DataGridViewRow selectedRow = tblProduct.SelectedRows[0];
 
-                    catch
-                    {
-                        int indexRow = tblProduct.CurrentRow.Index;
-                        for (int i = 0; i < tblProduct.Rows.Count; i++)
-                        {
-                            if
-                           (Convert.ToInt32(tblProduct.Rows[indexRow].Cells["dataGridViewTextBoxColumn7"].Value) == 0)
-                            {
-                            MessageBox.Show("Препарат отсутствует");
-                                return;
-                            }
-                            if
-                           (Convert.ToInt32(tblProduct.Rows[indexRow].Cells["dataGridViewTextBoxColumn7"].Value) < количествоNumericUpDown.Value)
-                            {
-                                if (tblCart.Rows.Count == 0)
-                                {
-                                    tblCart.DataSource = null;
-                                }
-                                MessageBox.Show("В аптеке отсутствует такое количество препаратов");
-                                return;
-                            }
-                            else
-                            {
-                                MessageBox.Show("В заказе уже есть такой препарат");
-                                return;
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }*/
+             // Получаем данные о товаре
+             string barcode = selectedRow.Cells["Barcode"].Value.ToString();
+             string name = selectedRow.Cells["NameProduct"].Value.ToString();
+             decimal price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
+
+             // Добавляем товар в корзину (второй DataGridView)
+             tblCart.Rows.Add(barcode, name, price);*/
+
+            try
+            {
+                tableProductBindingSource.MoveFirst();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
         }
 
         private void btn_removeFromCart_Click(object sender, EventArgs e)
@@ -223,6 +161,13 @@ namespace Pharmacy
         private void btn_sell_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmAuth();
+            frm.Show();
+            this.Hide();
         }
     }
 }
