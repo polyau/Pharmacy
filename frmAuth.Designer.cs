@@ -187,4 +187,3 @@
         private System.Data.SqlClient.SqlCommand sqlCommand_auth;
     }
 }
-

@@ -46,13 +46,9 @@
             this.sqlConnection = new System.Data.SqlClient.SqlConnection();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnWriteOff = new System.Windows.Forms.Button();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pharmacyDataSet = new Pharmacy.PharmacyDataSet();
-            this.productTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.ProductTableAdapter();
-            this.pharmacyDataSet1 = new Pharmacy.PharmacyDataSet();
-            this.tableProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableProductTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.tableProductTableAdapter();
             this.tblProduct = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,17 +56,24 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minReserveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pharmacyDataSet1 = new Pharmacy.PharmacyDataSet();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pharmacyDataSet = new Pharmacy.PharmacyDataSet();
+            this.productTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.ProductTableAdapter();
+            this.tableProductTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.tableProductTableAdapter();
             this.tableProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.viewGetManagerSotrBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewGetManagerSotrTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.viewGetManagerSotrTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Cart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewGetManagerSotrBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMedicament
@@ -112,6 +115,8 @@
             // cb_cashier
             // 
             this.cb_cashier.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cb_cashier.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.viewGetManagerSotrBindingSource, "Fio", true));
+            this.cb_cashier.DataSource = this.viewGetManagerSotrBindingSource;
             this.cb_cashier.DisplayMember = "Fio";
             this.cb_cashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb_cashier.FormattingEnabled = true;
@@ -268,34 +273,6 @@
             this.btnWriteOff.Text = "Списать товар";
             this.btnWriteOff.UseVisualStyleBackColor = false;
             // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataMember = "Product";
-            this.productBindingSource.DataSource = this.pharmacyDataSet;
-            // 
-            // pharmacyDataSet
-            // 
-            this.pharmacyDataSet.DataSetName = "PharmacyDataSet";
-            this.pharmacyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productTableAdapter
-            // 
-            this.productTableAdapter.ClearBeforeFill = true;
-            // 
-            // pharmacyDataSet1
-            // 
-            this.pharmacyDataSet1.DataSetName = "PharmacyDataSet";
-            this.pharmacyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableProductBindingSource
-            // 
-            this.tableProductBindingSource.DataMember = "tableProduct";
-            this.tableProductBindingSource.DataSource = this.pharmacyDataSet1;
-            // 
-            // tableProductTableAdapter
-            // 
-            this.tableProductTableAdapter.ClearBeforeFill = true;
-            // 
             // tblProduct
             // 
             this.tblProduct.AllowUserToAddRows = false;
@@ -318,6 +295,31 @@
             this.tblProduct.RowTemplate.Height = 24;
             this.tblProduct.Size = new System.Drawing.Size(941, 362);
             this.tblProduct.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(1, 382);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(421, 22);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Введите название, бренд или категорию товара:";
+            // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnBack.Location = new System.Drawing.Point(1028, 598);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(142, 43);
+            this.btnBack.TabIndex = 36;
+            this.btnBack.Text = "Назад";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
@@ -382,35 +384,47 @@
             this.inStockDataGridViewTextBoxColumn.ReadOnly = true;
             this.inStockDataGridViewTextBoxColumn.Width = 125;
             // 
+            // tableProductBindingSource
+            // 
+            this.tableProductBindingSource.DataMember = "tableProduct";
+            this.tableProductBindingSource.DataSource = this.pharmacyDataSet1;
+            // 
+            // pharmacyDataSet1
+            // 
+            this.pharmacyDataSet1.DataSetName = "PharmacyDataSet";
+            this.pharmacyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataMember = "Product";
+            this.productBindingSource.DataSource = this.pharmacyDataSet;
+            // 
+            // pharmacyDataSet
+            // 
+            this.pharmacyDataSet.DataSetName = "PharmacyDataSet";
+            this.pharmacyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productTableAdapter
+            // 
+            this.productTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableProductTableAdapter
+            // 
+            this.tableProductTableAdapter.ClearBeforeFill = true;
+            // 
             // tableProductBindingSource1
             // 
             this.tableProductBindingSource1.DataMember = "tableProduct";
             this.tableProductBindingSource1.DataSource = this.pharmacyDataSet1;
             // 
-            // label4
+            // viewGetManagerSotrBindingSource
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(1, 382);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(421, 22);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Введите название, бренд или категорию товара:";
+            this.viewGetManagerSotrBindingSource.DataMember = "viewGetManagerSotr";
+            this.viewGetManagerSotrBindingSource.DataSource = this.pharmacyDataSet1;
             // 
-            // btnBack
+            // viewGetManagerSotrTableAdapter
             // 
-            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(1028, 598);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(142, 43);
-            this.btnBack.TabIndex = 36;
-            this.btnBack.Text = "Назад";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.viewGetManagerSotrTableAdapter.ClearBeforeFill = true;
             // 
             // frmProduct
             // 
@@ -443,12 +457,13 @@
             this.Load += new System.EventHandler(this.frmProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Cart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewGetManagerSotrBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,5 +504,7 @@
         private System.Windows.Forms.BindingSource tableProductBindingSource1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.BindingSource viewGetManagerSotrBindingSource;
+        private PharmacyDataSetTableAdapters.viewGetManagerSotrTableAdapter viewGetManagerSotrTableAdapter;
     }
 }

@@ -19,10 +19,14 @@ namespace Pharmacy
         public frmCashier()
         {
             InitializeComponent();
+
+       //     txtCashier.Text = frmAuth.txtLogin;
         }
 
         private void frmCashier_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.getCashierSotr". При необходимости она может быть перемещена или удалена.
+            this.getCashierSotrTableAdapter.Fill(this.pharmacyDataSet.getCashierSotr);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet._tableProduct". При необходимости она может быть перемещена или удалена.
             this.tableProductTableAdapter.Fill(this.pharmacyDataSet._tableProduct);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Sotr". При необходимости она может быть перемещена или удалена.
@@ -168,6 +172,11 @@ namespace Pharmacy
             Form frm = new frmAuth();
             frm.Show();
             this.Hide();
+        }
+
+        private void txtCashier_TextChanged(object sender, EventArgs e)
+        {
+       //     txtCashier.Text = frmAuth.txtLogin;
         }
     }
 }

@@ -38,13 +38,6 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MinReserve = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameProductDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minReserveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pharmacyDataSet = new Pharmacy.PharmacyDataSet();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -71,6 +64,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tableProductTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.tableProductTableAdapter();
             this.btnBack = new System.Windows.Forms.Button();
+            this.sqlCommand_cshSotr = new System.Data.SqlClient.SqlCommand();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameProductDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minReserveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.getCashierSotrBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.getCashierSotrTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.getCashierSotrTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
@@ -78,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sotrBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblCart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getCashierSotrBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tblProduct
@@ -173,69 +177,6 @@
             this.InStock.Name = "InStock";
             this.InStock.ReadOnly = true;
             this.InStock.Width = 125;
-            // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.barcodeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameCategoryDataGridViewTextBoxColumn
-            // 
-            this.nameCategoryDataGridViewTextBoxColumn.DataPropertyName = "NameCategory";
-            this.nameCategoryDataGridViewTextBoxColumn.HeaderText = "NameCategory";
-            this.nameCategoryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameCategoryDataGridViewTextBoxColumn.Name = "nameCategoryDataGridViewTextBoxColumn";
-            this.nameCategoryDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameCategoryDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // brandDataGridViewTextBoxColumn
-            // 
-            this.brandDataGridViewTextBoxColumn.DataPropertyName = "Brand";
-            this.brandDataGridViewTextBoxColumn.HeaderText = "Brand";
-            this.brandDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
-            this.brandDataGridViewTextBoxColumn.ReadOnly = true;
-            this.brandDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameProductDataGridViewTextBoxColumn
-            // 
-            this.nameProductDataGridViewTextBoxColumn.DataPropertyName = "NameProduct";
-            this.nameProductDataGridViewTextBoxColumn.HeaderText = "NameProduct";
-            this.nameProductDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameProductDataGridViewTextBoxColumn.Name = "nameProductDataGridViewTextBoxColumn";
-            this.nameProductDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameProductDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // minReserveDataGridViewTextBoxColumn
-            // 
-            this.minReserveDataGridViewTextBoxColumn.DataPropertyName = "MinReserve";
-            this.minReserveDataGridViewTextBoxColumn.HeaderText = "MinReserve";
-            this.minReserveDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.minReserveDataGridViewTextBoxColumn.Name = "minReserveDataGridViewTextBoxColumn";
-            this.minReserveDataGridViewTextBoxColumn.ReadOnly = true;
-            this.minReserveDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // inStockDataGridViewTextBoxColumn
-            // 
-            this.inStockDataGridViewTextBoxColumn.DataPropertyName = "InStock";
-            this.inStockDataGridViewTextBoxColumn.HeaderText = "InStock";
-            this.inStockDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.inStockDataGridViewTextBoxColumn.Name = "inStockDataGridViewTextBoxColumn";
-            this.inStockDataGridViewTextBoxColumn.ReadOnly = true;
-            this.inStockDataGridViewTextBoxColumn.Width = 125;
             // 
             // tableProductBindingSource
             // 
@@ -391,12 +332,13 @@
             // 
             this.cb_cashier.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cb_cashier.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sotrBindingSource, "Fio", true));
-            this.cb_cashier.DataSource = this.sotrBindingSource;
+            this.cb_cashier.DataSource = this.getCashierSotrBindingSource;
             this.cb_cashier.DisplayMember = "Fio";
             this.cb_cashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb_cashier.FormattingEnabled = true;
             this.cb_cashier.Location = new System.Drawing.Point(900, 492);
             this.cb_cashier.Name = "cb_cashier";
+            this.cb_cashier.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cb_cashier.Size = new System.Drawing.Size(214, 33);
             this.cb_cashier.TabIndex = 12;
             this.cb_cashier.ValueMember = "Fio";
@@ -494,6 +436,84 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // sqlCommand_cshSotr
+            // 
+            this.sqlCommand_cshSotr.CommandText = "SELECT Fio \r\nFROM     Sotr\r\n WHERE  (Position = \'Провизор\') OR\r\n                 " +
+    " (Position = \'Фармацевт\')";
+            this.sqlCommand_cshSotr.Connection = this.sqlConnection;
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.barcodeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameCategoryDataGridViewTextBoxColumn
+            // 
+            this.nameCategoryDataGridViewTextBoxColumn.DataPropertyName = "NameCategory";
+            this.nameCategoryDataGridViewTextBoxColumn.HeaderText = "NameCategory";
+            this.nameCategoryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameCategoryDataGridViewTextBoxColumn.Name = "nameCategoryDataGridViewTextBoxColumn";
+            this.nameCategoryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameCategoryDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // brandDataGridViewTextBoxColumn
+            // 
+            this.brandDataGridViewTextBoxColumn.DataPropertyName = "Brand";
+            this.brandDataGridViewTextBoxColumn.HeaderText = "Brand";
+            this.brandDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
+            this.brandDataGridViewTextBoxColumn.ReadOnly = true;
+            this.brandDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameProductDataGridViewTextBoxColumn
+            // 
+            this.nameProductDataGridViewTextBoxColumn.DataPropertyName = "NameProduct";
+            this.nameProductDataGridViewTextBoxColumn.HeaderText = "NameProduct";
+            this.nameProductDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameProductDataGridViewTextBoxColumn.Name = "nameProductDataGridViewTextBoxColumn";
+            this.nameProductDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameProductDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // minReserveDataGridViewTextBoxColumn
+            // 
+            this.minReserveDataGridViewTextBoxColumn.DataPropertyName = "MinReserve";
+            this.minReserveDataGridViewTextBoxColumn.HeaderText = "MinReserve";
+            this.minReserveDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.minReserveDataGridViewTextBoxColumn.Name = "minReserveDataGridViewTextBoxColumn";
+            this.minReserveDataGridViewTextBoxColumn.ReadOnly = true;
+            this.minReserveDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // inStockDataGridViewTextBoxColumn
+            // 
+            this.inStockDataGridViewTextBoxColumn.DataPropertyName = "InStock";
+            this.inStockDataGridViewTextBoxColumn.HeaderText = "InStock";
+            this.inStockDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.inStockDataGridViewTextBoxColumn.Name = "inStockDataGridViewTextBoxColumn";
+            this.inStockDataGridViewTextBoxColumn.ReadOnly = true;
+            this.inStockDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // getCashierSotrBindingSource
+            // 
+            this.getCashierSotrBindingSource.DataMember = "getCashierSotr";
+            this.getCashierSotrBindingSource.DataSource = this.pharmacyDataSet;
+            // 
+            // getCashierSotrTableAdapter
+            // 
+            this.getCashierSotrTableAdapter.ClearBeforeFill = true;
+            // 
             // frmCashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -529,6 +549,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sotrBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblCart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getCashierSotrBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,6 +583,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource tableProductBindingSource;
         private PharmacyDataSetTableAdapters.tableProductTableAdapter tableProductTableAdapter;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
@@ -569,6 +591,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn MinReserve;
         private System.Windows.Forms.DataGridViewTextBoxColumn InStock;
+        private System.Data.SqlClient.SqlCommand sqlCommand_cshSotr;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameCategoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
@@ -576,6 +599,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn minReserveDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inStockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.BindingSource getCashierSotrBindingSource;
+        private PharmacyDataSetTableAdapters.getCashierSotrTableAdapter getCashierSotrTableAdapter;
     }
 }

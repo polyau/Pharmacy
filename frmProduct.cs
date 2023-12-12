@@ -19,6 +19,8 @@ namespace Pharmacy
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet1.viewGetManagerSotr". При необходимости она может быть перемещена или удалена.
+            this.viewGetManagerSotrTableAdapter.Fill(this.pharmacyDataSet1.viewGetManagerSotr);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet1._tableProduct". При необходимости она может быть перемещена или удалена.
             this.tableProductTableAdapter.Fill(this.pharmacyDataSet1._tableProduct);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Product". При необходимости она может быть перемещена или удалена.
