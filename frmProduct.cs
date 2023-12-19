@@ -12,9 +12,12 @@ namespace Pharmacy
 {
     public partial class frmProduct : Form
     {
-        public frmProduct()
+        private string word; // Переменная, в которой будет храниться переданное слово
+
+        public frmProduct(string word)
         {
             InitializeComponent();
+            this.word = word; // Сохранение переданного слова в переменную word
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -25,18 +28,13 @@ namespace Pharmacy
             this.tableProductTableAdapter.Fill(this.pharmacyDataSet1._tableProduct);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Product". При необходимости она может быть перемещена или удалена.
             this.productTableAdapter.Fill(this.pharmacyDataSet.Product);
+
+            txtOutput.Text = word; // Отображение переданного слова в txtOutput
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             Form frm = new frmAddProduct();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void btnWriteOff_Click(object sender, EventArgs e)
-        {
-            Form frm = new frmWriteOff();
             frm.Show();
             this.Hide();
         }
@@ -61,7 +59,32 @@ namespace Pharmacy
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Form frm = new frmManager();
+            Form frm = new frmManager(word);
+            frm.Show();
+            this.Hide();
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnWriteOff_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmWriteOff();
+            frm.Show();
+            this.Hide();
+        }
+
+        private void btnMedicament_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmMedicament();
+            frm.Show();
+        }
+
+        private void btnAddPurveyor_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmAddPurveyor(word);
             frm.Show();
             this.Hide();
         }

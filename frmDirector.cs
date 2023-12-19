@@ -12,33 +12,47 @@ namespace Pharmacy
 {
     public partial class frmDirector : Form
     {
-        public frmDirector()
+        private string word; // Переменная, в которой будет храниться переданное слово
+
+        public frmDirector(string word)
         {
             InitializeComponent();
+            this.word = word; // Сохранение переданного слова в переменную word
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            Form frm = new frmProduct();
+            Form frm = new frmProduct(word);
             frm.Show();
+            this.Hide();
         }
 
         private void btnSotr_Click(object sender, EventArgs e)
         {
-            Form frm = new frmSotr();
+            Form frm = new frmSotr(word);
             frm.Show();
+            this.Hide();
         }
 
         private void btnCassa_Click(object sender, EventArgs e)
         {
-            Form frm = new frmCashier();
+            Form frm = new frmCashier(word);
             frm.Show();
+            this.Hide();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             Form frm = new frmAuth();
             frm.Show();
+            this.Hide();
+        }
+
+        private void btnSotr_Click_1(object sender, EventArgs e)
+        {
+            Form frm = new frmSotr(word);
+            frm.Show();
+            this.Hide();
         }
     }
 }

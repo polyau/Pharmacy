@@ -23,54 +23,56 @@ namespace Pharmacy
         {
             if (txtBarcode.Text.Length != 13)
             {
-                MessageBox.Show("Введен некорректный штрихкод");
-             //   txtBarcode.Text = string.Empty; // Очистить поле ввода
+                MessageBox.Show("Введен некорректный штрихкод", "Добавлние характеристик", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             foreach (char c in txtBarcode.Text)
             {
                 if (!char.IsDigit(c))
                 {
-                    MessageBox.Show("Введен некорректный штрихкод");
-               //     txtBarcode.Text = string.Empty;
+                    MessageBox.Show("Введен некорректный штрихкод", "Добавлние характеристик", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 }
             }
 
             sqlCommand_medicament.Parameters["@barcode"].Value = txtBarcode.Text;
 
-           /* sqlConnection.Open();
-            var temp = new DataTable();
-            temp.Load(sqlCommand_medicament.ExecuteReader());
-            tblMedicament.DataSource = temp;
-            sqlConnection.Close();*/
-
-
             sqlConnection.Open();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(sqlCommand_medicament);
             da.Fill(dt);
 
-            txtPharmGroup.Text = dt.Rows[0]["Фарм.группа"].ToString();
-            txtExp.Text = dt.Rows[0]["Срок годности"].ToString();
-            txtNotes.Text = dt.Rows[0]["Примечания"].ToString();
-            txtEffect.Text = dt.Rows[0]["Эффект"].ToString();
-            txtActiveSubstance.Text = dt.Rows[0]["Действующее вещество"].ToString();
-            txtReleaseForm.Text = dt.Rows[0]["Форма выпуска"].ToString();
-            txtDosage.Text = dt.Rows[0]["Дозировка"].ToString();
-            txtQuantity.Text = dt.Rows[0]["Количество"].ToString();
-            txtVolume.Text = dt.Rows[0]["Объем"].ToString();
-            txtComposition.Text = dt.Rows[0]["Состав"].ToString();
-            txtCountry.Text = dt.Rows[0]["Страна"].ToString();
-            txtManufactur.Text = dt.Rows[0]["Производитель"].ToString();
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Характеристики для данного товара отсутствуют, либо введен неверный штрихкод.", 
+                    "Добавление характеристик", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                sqlConnection.Close();
+                return;
+            }
 
-            sqlConnection.Close();
+            else
+            {
+                txtPharmGroup.Text = dt.Rows[0]["Фарм.группа"].ToString();
+                txtExp.Text = dt.Rows[0]["Срок годности"].ToString();
+                txtNotes.Text = dt.Rows[0]["Примечания"].ToString();
+                txtEffect.Text = dt.Rows[0]["Эффект"].ToString();
+                txtActiveSubstance.Text = dt.Rows[0]["Действующее вещество"].ToString();
+                txtReleaseForm.Text = dt.Rows[0]["Форма выпуска"].ToString();
+                txtDosage.Text = dt.Rows[0]["Дозировка"].ToString();
+                txtQuantity.Text = dt.Rows[0]["Количество"].ToString();
+                txtVolume.Text = dt.Rows[0]["Объем"].ToString();
+                txtComposition.Text = dt.Rows[0]["Состав"].ToString();
+                txtCountry.Text = dt.Rows[0]["Страна"].ToString();
+                txtManufactur.Text = dt.Rows[0]["Производитель"].ToString();
 
-            sqlCommand_getProductInfo.Parameters["@barcode"].Value = txtBarcode.Text;
+                sqlConnection.Close();
 
-            sqlConnection.Open();
-            txtProductInfo.Text = sqlCommand_getProductInfo.ExecuteScalar().ToString();
-            sqlConnection.Close();
+                sqlCommand_getProductInfo.Parameters["@barcode"].Value = txtBarcode.Text;
+
+                sqlConnection.Open();
+                txtProductInfo.Text = sqlCommand_getProductInfo.ExecuteScalar().ToString();
+                sqlConnection.Close();
+            }
         }
     }
 }

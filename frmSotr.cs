@@ -14,9 +14,12 @@ namespace Pharmacy
 {
     public partial class frmSotr : Form
     {
-        public frmSotr()
+        private string word; // Переменная, в которой будет храниться переданное слово
+
+        public frmSotr(string word)
         {
             InitializeComponent();
+            this.word = word; // Сохранение переданного слова в переменную word
         }
 
         private void frmSotr_Load(object sender, EventArgs e)
@@ -67,6 +70,9 @@ namespace Pharmacy
                 sqlCommand_addSotr.ExecuteNonQuery();
                 sqlConnection.Close();
                 ClearInsert(sender, e);
+
+                MessageBox.Show("Запрос на добавление новго сотрудника выполнен",
+             "Добавление сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             sqlConnection.Open();
@@ -75,8 +81,7 @@ namespace Pharmacy
             tblSotr.DataSource = temp;
             sqlConnection.Close();
 
-            //    MessageBox.Show("Запрос на добавление новго сотрудника выполнен",
-            // "Добавление сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
         }
 
         private void btnRemoveSotr_Click(object sender, EventArgs e)
@@ -119,14 +124,11 @@ namespace Pharmacy
              temp.Load(sqlCommand_allSotr.ExecuteReader());
              tblSotr.DataSource = temp;
              sqlConnection.Close();
-        }
-
-        private void label6_Click(object sender, EventArgs e) { }
-        private void txtFio_TextChanged(object sender, EventArgs e) { }
+        }   
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Form frm = new frmManager();
+            Form frm = new frmManager(word);
             frm.Show();
             this.Hide();
         }

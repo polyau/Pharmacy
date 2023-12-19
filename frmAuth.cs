@@ -47,19 +47,23 @@ namespace Pharmacy
                 }
 
                 else if (Convert.ToInt32(sqlCommand_auth.Parameters["@a"].Value) == 1) {
-                    Form frm = new frmCashier();
+                    string word = txtLogin.Text; // Получение введенного слова из txtLogin
+                    Form frm = new frmCashier(word);
                     frm.Show();
                     this.Hide();
                 }
 
-                else if (Convert.ToInt32(sqlCommand_auth.Parameters["@a"].Value) == 2) {
-                    Form frm = new frmManager();
+                else if (Convert.ToInt32(sqlCommand_auth.Parameters["@a"].Value) == 2)
+                {
+                    string word = txtLogin.Text; // Получение введенного слова из txtLogin
+                    Form frm = new frmManager(word);
                     frm.Show();
                     this.Hide();
                 }
                 else if (Convert.ToInt32(sqlCommand_auth.Parameters["@a"].Value) == 3)
                 {
-                    Form frm = new frmDirector();
+                    string word = txtLogin.Text; // Получение введенного слова из txtLogin
+                    Form frm = new frmDirector(word);
                     frm.Show();
                     this.Hide();
                 }
@@ -70,31 +74,13 @@ namespace Pharmacy
                     MessageBox.Show($"Повторите ввод, количество попыток: {EnterTry}", "Ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     EnterTry--;
-                    txtLogin.Clear();
+               //     txtLogin.Clear();
                     txtPasswd.Clear();
                     sqlCommand_auth.Parameters["@fio"].Value = 0;
                     sqlCommand_auth.Parameters["@phoneNum"].Value = 0;
                     sqlCommand_auth.Parameters["@a"].Value = 0;
                     sqlConnection.Close();
             }
-
-     /*       if (txtLogin.Text == "менеджер" && txtPasswd.Text == "менеджер")
-            {
-                Form frm = new frmManager();
-                frm.Show();
-            }
-
-            else if (txtLogin.Text == "первостольник" && txtPasswd.Text == "первостольник")
-            {
-                Form frm = new frmCashier();
-                frm.Show();
-            }
-
-            else
-            {
-                MessageBox.Show("Данные введены неверно. Повторите попытку", 
-                    "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }*/
         }
 
         private void txtPasswd_TextChanged(object sender, EventArgs e)

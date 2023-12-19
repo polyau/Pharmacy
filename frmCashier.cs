@@ -16,12 +16,14 @@ namespace Pharmacy
 {
     public partial class frmCashier : Form
     {
-        public frmCashier()
+        private string word; // Переменная, в которой будет храниться переданное слово
+
+        public frmCashier(string word)
         {
             InitializeComponent();
-
-       //     txtCashier.Text = frmAuth.txtLogin;
+            this.word = word; // Сохранение переданного слова в переменную word
         }
+
 
         private void frmCashier_Load(object sender, EventArgs e)
         {
@@ -38,6 +40,7 @@ namespace Pharmacy
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Product". При необходимости она может быть перемещена или удалена.
             this.productTableAdapter.Fill(this.pharmacyDataSet.Product);
 
+            txtOutput.Text = word; // Отображение переданного слова в txtOutput
         }
 
         private void ClearInsert(object sender, EventArgs e)
@@ -62,68 +65,6 @@ namespace Pharmacy
         {
             Form frm = new frmAnalogs();
             frm.Show();
-            //    if (tblProduct.SelectedRows.Count == 1)
-            //   {
-            /*      int selectedIndex = tblProduct.SelectedRows[0].Index;
-                  // Получаем значение Barcode из выделенной строки в DataGridView
-                  string Barcode = tblProduct.CurrentRow.Cells["Barcode"].Value.ToString();
-
-                      // Выполняем запрос к базе данных, используя функцию поиска аналогов
-                      using (SqlConnection sqlConnection = new SqlConnection("sqlConnection"))
-                      {
-                          sqlConnection.Open();
-                          SqlCommand sqlCommand_findAnalogs = new SqlCommand("SELECT * FROM dbo.findAnalogs(@Barcode)", sqlConnection);
-                          sqlCommand_findAnalogs.Parameters.AddWithValue("@Barcode", Barcode);
-                          SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand_findAnalogs);
-                          DataTable analogsTable = new DataTable();
-                          adapter.Fill(analogsTable);
-                          sqlConnection.Close();
-
-                          // Обновляем DataGridView новыми данными
-                          tblAnalogs.DataSource = analogsTable;
-                      }*/
-
-            //    }
-
-            /*   long selectedIndex = tblProduct.SelectedRows[0].Index;
-               long Barcode = Convert.ToLong(tblProduct[0, selectedIndex].Value);
-             //  string barcodeString = Barcode.ToString("D13");
-
-               using (SqlConnection sqlConnection = new SqlConnection("sqlConnection"))
-               {
-
-                   sqlConnection.Open();
-                   sqlCommand_findAnalogs.Parameters.AddWithValue("@Barcode", Barcode);
-                   var temp = new DataTable();
-                   temp.Load(sqlCommand_findAnalogs.ExecuteReader());
-                   tblAnalogs.DataSource = temp;
-                   sqlConnection.Close();
-                   /*
-
-                   /*   sqlConnection.Open();
-                      SqlCommand sqlCommand_findAnalogs = new SqlCommand("SELECT * FROM dbo.findAnalogs()", sqlConnection);
-                      sqlCommand_findAnalogs.Parameters.AddWithValue("@Barcode", Barcode);
-                      SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand_findAnalogs);
-                      DataTable analogsTable = new DataTable();
-                      adapter.Fill(analogsTable);
-                      tblAnalogs.DataSource = analogsTable;
-                      sqlConnection.Close();
-        }
-
-        }
-        else
-        {
-            MessageBox.Show("Выберите товар", "Подбор аналогов", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }*/
-
-            /*   if (tblProduct.SelectedRows.Count == 1)
-               {
-                   sqlConnection.Open();
-                   var temp = new DataTable();
-                   temp.Load(sqlCommand_findAnalogs.ExecuteReader());
-                   tblProduct.DataSource = temp;
-                   sqlConnection.Close();
-               }*/
         }
 
         private void btnAddToCart_Click(object sender, EventArgs e)
@@ -147,13 +88,6 @@ namespace Pharmacy
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
-        }
-
-        private void btn_removeFromCart_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnMedicament_Click(object sender, EventArgs e)
@@ -162,8 +96,33 @@ namespace Pharmacy
             frm.Show();
         }
 
-        private void btn_sell_Click(object sender, EventArgs e)
+        private void btnSell_Click(object sender, EventArgs e)
         {
+           /* if (txtBarcodeSell.Text.Length != 13)
+            {
+                MessageBox.Show("Введен некорректный штрихкод", "Добавлние товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //   txtBarcode.Text = string.Empty; // Очистить поле ввода
+                return;
+            }
+            foreach (char c in txtBarcodeSell.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    MessageBox.Show("Введен некорректный штрихкод");
+                    //     txtBarcode.Text = string.Empty;
+                    break;
+                }
+            }
+
+            sqlCommand_Sell.Parameters["@barcode"].Value = txtBarcodeSell.Text;
+            sqlCommand_Sell.Parameters["@quantity"].Value = numUD_count.Text;
+            sqlCommand_Sell.Parameters["@sotr"].Value = cbCashier.Text;
+
+            sqlConnection.Open();
+            sqlCommand_Sell.ExecuteNonQuery(); ;
+            sqlConnection.Close();
+
+            */
 
         }
 
@@ -177,6 +136,45 @@ namespace Pharmacy
         private void txtCashier_TextChanged(object sender, EventArgs e)
         {
        //     txtCashier.Text = frmAuth.txtLogin;
+        }
+
+        private void ClearInsertSell(object sender, EventArgs e)
+        {
+            txtBarcodeSell.Text = "";
+            numUD_count.Value = 1;
+        }
+
+        private void btnSell_Click_1(object sender, EventArgs e)
+        {
+            if (txtBarcodeSell.Text.Length != 13)
+            {
+                MessageBox.Show("Введен некорректный штрихкод", "Оформление продажи", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //   txtBarcode.Text = string.Empty; // Очистить поле ввода
+                return;
+            }
+            foreach (char c in txtBarcodeSell.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    MessageBox.Show("Введен некорректный штрихкод", "Оформление продажи", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //     txtBarcode.Text = string.Empty;
+                    break;
+                }
+            }
+
+            sqlCommand_Sell.Parameters["@barcode"].Value = txtBarcodeSell.Text;
+            sqlCommand_Sell.Parameters["@quantity"].Value = numUD_count.Text;
+            sqlCommand_Sell.Parameters["@sotr"].Value = txtOutput.Text;
+
+            sqlConnection.Open();
+            sqlCommand_Sell.ExecuteNonQuery(); ;
+            sqlConnection.Close();
+
+            MessageBox.Show("Продажа оформлена", "Оформление продажи", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ClearInsertSell(sender, e);
         }
     }
 }

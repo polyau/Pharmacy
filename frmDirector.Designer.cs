@@ -60,6 +60,7 @@
             this.btnSotr.TabIndex = 4;
             this.btnSotr.Text = "Учет персонала";
             this.btnSotr.UseVisualStyleBackColor = false;
+            this.btnSotr.Click += new System.EventHandler(this.btnSotr_Click_1);
             // 
             // btnProduct
             // 

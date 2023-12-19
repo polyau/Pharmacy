@@ -60,6 +60,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbExp = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.sqlCommand_checkBarcode = new System.Data.SqlClient.SqlCommand();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,6 +233,7 @@
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(851, 30);
             this.txtNotes.TabIndex = 20;
+            this.txtNotes.Text = "Беречь от детей";
             // 
             // txtEffect
             // 
@@ -380,6 +382,13 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // sqlCommand_checkBarcode
+            // 
+            this.sqlCommand_checkBarcode.CommandText = "SELECT dbo.checkBarcode(@barcode)";
+            this.sqlCommand_checkBarcode.Connection = this.sqlConnection;
+            this.sqlCommand_checkBarcode.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
+            // 
             // frmAddMedicament
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -458,5 +467,6 @@
         private System.Windows.Forms.TextBox txtComposition;
         private System.Windows.Forms.ComboBox cbExp;
         private System.Windows.Forms.Button btnClear;
+        private System.Data.SqlClient.SqlCommand sqlCommand_checkBarcode;
     }
 }

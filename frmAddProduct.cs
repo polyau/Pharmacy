@@ -13,9 +13,12 @@ namespace Pharmacy
 {
     public partial class frmAddProduct : Form
     {
+        private string word; // Переменная, в которой будет храниться переданное слово
+
         public frmAddProduct()
         {
             InitializeComponent();
+            this.word = word; // Сохранение переданного слова в переменную word
         }
 
         private void categoryBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -104,7 +107,7 @@ namespace Pharmacy
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Form frm = new frmProduct();
+            Form frm = new frmProduct(word);
             frm.Show();
             this.Hide();
         }

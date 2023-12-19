@@ -107,7 +107,6 @@
             this.txtFio.Name = "txtFio";
             this.txtFio.Size = new System.Drawing.Size(140, 30);
             this.txtFio.TabIndex = 3;
-            this.txtFio.TextChanged += new System.EventHandler(this.txtFio_TextChanged);
             // 
             // txtPhone
             // 
@@ -298,7 +297,6 @@
             this.label6.Size = new System.Drawing.Size(234, 18);
             this.label6.TabIndex = 13;
             this.label6.Text = "Выберите сотрудника в таблице";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // cbPosition
             // 

@@ -33,9 +33,10 @@
             this.btnMedicament = new System.Windows.Forms.Button();
             this.tbl_Cart = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.cb_cashier = new System.Windows.Forms.ComboBox();
+            this.viewGetManagerSotrBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pharmacyDataSet1 = new Pharmacy.PharmacyDataSet();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_sell = new System.Windows.Forms.Button();
+            this.btnSell = new System.Windows.Forms.Button();
             this.btn_removeFromCart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numUD_count = new System.Windows.Forms.NumericUpDown();
@@ -47,8 +48,6 @@
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnWriteOff = new System.Windows.Forms.Button();
             this.tblProduct = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,23 +56,29 @@
             this.minReserveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pharmacyDataSet1 = new Pharmacy.PharmacyDataSet();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pharmacyDataSet = new Pharmacy.PharmacyDataSet();
             this.productTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.ProductTableAdapter();
             this.tableProductTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.tableProductTableAdapter();
             this.tableProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.viewGetManagerSotrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.viewGetManagerSotrTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.viewGetManagerSotrTableAdapter();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBarcodeOrd = new System.Windows.Forms.TextBox();
+            this.btnAddPurveyor = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtOutput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Cart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewGetManagerSotrBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewGetManagerSotrBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMedicament
@@ -88,6 +93,7 @@
             this.btnMedicament.TabIndex = 30;
             this.btnMedicament.Text = "Описание препаратов";
             this.btnMedicament.UseVisualStyleBackColor = false;
+            this.btnMedicament.Click += new System.EventHandler(this.btnMedicament_Click);
             // 
             // tbl_Cart
             // 
@@ -97,13 +103,14 @@
             this.tbl_Cart.Name = "tbl_Cart";
             this.tbl_Cart.RowHeadersWidth = 51;
             this.tbl_Cart.RowTemplate.Height = 24;
-            this.tbl_Cart.Size = new System.Drawing.Size(820, 209);
+            this.tbl_Cart.Size = new System.Drawing.Size(778, 209);
             this.tbl_Cart.TabIndex = 29;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Gray;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(337, 412);
@@ -112,19 +119,15 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Корзина";
             // 
-            // cb_cashier
+            // viewGetManagerSotrBindingSource
             // 
-            this.cb_cashier.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_cashier.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.viewGetManagerSotrBindingSource, "Fio", true));
-            this.cb_cashier.DataSource = this.viewGetManagerSotrBindingSource;
-            this.cb_cashier.DisplayMember = "Fio";
-            this.cb_cashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cb_cashier.FormattingEnabled = true;
-            this.cb_cashier.Location = new System.Drawing.Point(901, 494);
-            this.cb_cashier.Name = "cb_cashier";
-            this.cb_cashier.Size = new System.Drawing.Size(214, 33);
-            this.cb_cashier.TabIndex = 27;
-            this.cb_cashier.ValueMember = "Fio";
+            this.viewGetManagerSotrBindingSource.DataMember = "viewGetManagerSotr";
+            this.viewGetManagerSotrBindingSource.DataSource = this.pharmacyDataSet1;
+            // 
+            // pharmacyDataSet1
+            // 
+            this.pharmacyDataSet1.DataSetName = "PharmacyDataSet";
+            this.pharmacyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -132,29 +135,30 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(900, 457);
+            this.label2.Location = new System.Drawing.Point(799, 562);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 25);
             this.label2.TabIndex = 26;
             this.label2.Text = "Заказал:";
             // 
-            // btn_sell
+            // btnSell
             // 
-            this.btn_sell.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_sell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btn_sell.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_sell.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_sell.Location = new System.Drawing.Point(901, 533);
-            this.btn_sell.Name = "btn_sell";
-            this.btn_sell.Size = new System.Drawing.Size(214, 42);
-            this.btn_sell.TabIndex = 25;
-            this.btn_sell.Text = "Оформить поставку";
-            this.btn_sell.UseVisualStyleBackColor = false;
+            this.btnSell.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSell.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSell.Location = new System.Drawing.Point(804, 598);
+            this.btnSell.Name = "btnSell";
+            this.btnSell.Size = new System.Drawing.Size(214, 42);
+            this.btnSell.TabIndex = 25;
+            this.btnSell.Text = "Оформить поставку";
+            this.btnSell.UseVisualStyleBackColor = false;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // btn_removeFromCart
             // 
             this.btn_removeFromCart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_removeFromCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btn_removeFromCart.BackColor = System.Drawing.Color.Gray;
             this.btn_removeFromCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_removeFromCart.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_removeFromCart.Location = new System.Drawing.Point(952, 327);
@@ -170,7 +174,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(952, 245);
+            this.label1.Location = new System.Drawing.Point(801, 525);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 25);
             this.label1.TabIndex = 23;
@@ -181,7 +185,7 @@
             this.numUD_count.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numUD_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numUD_count.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.numUD_count.Location = new System.Drawing.Point(1103, 243);
+            this.numUD_count.Location = new System.Drawing.Point(952, 523);
             this.numUD_count.Name = "numUD_count";
             this.numUD_count.Size = new System.Drawing.Size(67, 30);
             this.numUD_count.TabIndex = 22;
@@ -194,7 +198,7 @@
             // btnAddToCart
             // 
             this.btnAddToCart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddToCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnAddToCart.BackColor = System.Drawing.Color.Gray;
             this.btnAddToCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddToCart.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAddToCart.Location = new System.Drawing.Point(952, 279);
@@ -272,6 +276,7 @@
             this.btnWriteOff.TabIndex = 32;
             this.btnWriteOff.Text = "Списать товар";
             this.btnWriteOff.UseVisualStyleBackColor = false;
+            this.btnWriteOff.Click += new System.EventHandler(this.btnWriteOff_Click);
             // 
             // tblProduct
             // 
@@ -295,31 +300,6 @@
             this.tblProduct.RowTemplate.Height = 24;
             this.tblProduct.Size = new System.Drawing.Size(941, 362);
             this.tblProduct.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(1, 382);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(421, 22);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Введите название, бренд или категорию товара:";
-            // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(1028, 598);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(142, 43);
-            this.btnBack.TabIndex = 36;
-            this.btnBack.Text = "Назад";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
@@ -389,10 +369,30 @@
             this.tableProductBindingSource.DataMember = "tableProduct";
             this.tableProductBindingSource.DataSource = this.pharmacyDataSet1;
             // 
-            // pharmacyDataSet1
+            // label4
             // 
-            this.pharmacyDataSet1.DataSetName = "PharmacyDataSet";
-            this.pharmacyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(1, 382);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(421, 22);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Введите название, бренд или категорию товара:";
+            // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnBack.Location = new System.Drawing.Point(1028, 598);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(142, 43);
+            this.btnBack.TabIndex = 36;
+            this.btnBack.Text = "Назад";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // productBindingSource
             // 
@@ -417,14 +417,76 @@
             this.tableProductBindingSource1.DataMember = "tableProduct";
             this.tableProductBindingSource1.DataSource = this.pharmacyDataSet1;
             // 
-            // viewGetManagerSotrBindingSource
-            // 
-            this.viewGetManagerSotrBindingSource.DataMember = "viewGetManagerSotr";
-            this.viewGetManagerSotrBindingSource.DataSource = this.pharmacyDataSet1;
-            // 
             // viewGetManagerSotrTableAdapter
             // 
             this.viewGetManagerSotrTableAdapter.ClearBeforeFill = true;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(552, 416);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(231, 25);
+            this.label6.TabIndex = 39;
+            this.label6.Text = "Оформление поставки";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(801, 490);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 25);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Штрихкод:";
+            // 
+            // txtBarcodeOrd
+            // 
+            this.txtBarcodeOrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtBarcodeOrd.Location = new System.Drawing.Point(952, 487);
+            this.txtBarcodeOrd.Name = "txtBarcodeOrd";
+            this.txtBarcodeOrd.Size = new System.Drawing.Size(156, 30);
+            this.txtBarcodeOrd.TabIndex = 37;
+            // 
+            // btnAddPurveyor
+            // 
+            this.btnAddPurveyor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddPurveyor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnAddPurveyor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddPurveyor.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAddPurveyor.Location = new System.Drawing.Point(930, 439);
+            this.btnAddPurveyor.Name = "btnAddPurveyor";
+            this.btnAddPurveyor.Size = new System.Drawing.Size(240, 42);
+            this.btnAddPurveyor.TabIndex = 40;
+            this.btnAddPurveyor.Text = "Добавить поставщика";
+            this.btnAddPurveyor.UseVisualStyleBackColor = false;
+            this.btnAddPurveyor.Click += new System.EventHandler(this.btnAddPurveyor_Click);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label7.Location = new System.Drawing.Point(880, 401);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(298, 40);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "При оформлении заказа у нового \r\nпоставщика, создайте его";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtOutput
+            // 
+            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtOutput.Location = new System.Drawing.Point(952, 559);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(156, 30);
+            this.txtOutput.TabIndex = 42;
             // 
             // frmProduct
             // 
@@ -432,6 +494,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Controls.Add(this.txtOutput);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnAddPurveyor);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtBarcodeOrd);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tblProduct);
@@ -440,9 +508,8 @@
             this.Controls.Add(this.btnMedicament);
             this.Controls.Add(this.tbl_Cart);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cb_cashier);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_sell);
+            this.Controls.Add(this.btnSell);
             this.Controls.Add(this.btn_removeFromCart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numUD_count);
@@ -456,14 +523,14 @@
             this.Text = "Товары";
             this.Load += new System.EventHandler(this.frmProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Cart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewGetManagerSotrBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewGetManagerSotrBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,9 +541,8 @@
         private System.Windows.Forms.Button btnMedicament;
         private System.Windows.Forms.DataGridView tbl_Cart;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cb_cashier;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_sell;
+        private System.Windows.Forms.Button btnSell;
         private System.Windows.Forms.Button btn_removeFromCart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numUD_count;
@@ -506,5 +572,11 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.BindingSource viewGetManagerSotrBindingSource;
         private PharmacyDataSetTableAdapters.viewGetManagerSotrTableAdapter viewGetManagerSotrTableAdapter;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBarcodeOrd;
+        private System.Windows.Forms.Button btnAddPurveyor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtOutput;
     }
 }
