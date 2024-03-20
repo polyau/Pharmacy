@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProductInfo = new System.Windows.Forms.TextBox();
             this.sqlCommand_getProductInfo = new System.Data.SqlClient.SqlCommand();
+            this.sqlCommand_checkBarcode = new System.Data.SqlClient.SqlCommand();
             ((System.ComponentModel.ISupportInitialize)(this.tblAnalogs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,12 +49,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(369, 530);
+            this.label2.Location = new System.Drawing.Point(307, 523);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(484, 40);
+            this.label2.Size = new System.Drawing.Size(591, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Если ничего не отображается, это значит, что аналоги \r\nотсутствуют, либо введён н" +
-    "еверный штрихкод";
+            this.label2.Text = "Если ничего не отображается, это значит, что аналоги отсутствуют";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAnalogs
@@ -145,6 +145,13 @@
             this.sqlCommand_getProductInfo.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
             new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
             // 
+            // sqlCommand_checkBarcode
+            // 
+            this.sqlCommand_checkBarcode.CommandText = "SELECT dbo.checkBarcode(@barcode)";
+            this.sqlCommand_checkBarcode.Connection = this.sqlConnection;
+            this.sqlCommand_checkBarcode.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
+            // 
             // frmAnalogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -180,5 +187,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtProductInfo;
         private System.Data.SqlClient.SqlCommand sqlCommand_getProductInfo;
+        private System.Data.SqlClient.SqlCommand sqlCommand_checkBarcode;
     }
 }

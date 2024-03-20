@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Pharmacy.PharmacyDataSet;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Pharmacy
@@ -24,11 +25,10 @@ namespace Pharmacy
             this.word = word; // Сохранение переданного слова в переменную word
         }
 
-
         private void frmCashier_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.getCashierSotr". При необходимости она может быть перемещена или удалена.
-            this.getCashierSotrTableAdapter.Fill(this.pharmacyDataSet.getCashierSotr);
+        //    this.getCashierSotrTableAdapter.Fill(this.pharmacyDataSet.getCashierSotr);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet._tableProduct". При необходимости она может быть перемещена или удалена.
             this.tableProductTableAdapter.Fill(this.pharmacyDataSet._tableProduct);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "pharmacyDataSet.Sotr". При необходимости она может быть перемещена или удалена.
@@ -54,76 +54,16 @@ namespace Pharmacy
             ClearInsert(sender, e);
         }
 
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-            tableProductBindingSource.Filter = "NameProduct Like '" + "%" + txtFind.Text
-            + "%' OR Brand Like '%" + "%" + txtFind.Text + "%"
-            + "%' OR NameCategory Like '%" + "%" + txtFind.Text + "%'";
-        }
-
         private void btnFindAnalog_Click(object sender, EventArgs e)
         {
             Form frm = new frmAnalogs();
             frm.Show();
         }
 
-        private void btnAddToCart_Click(object sender, EventArgs e)
-        {
-            /* // Получаем выделенную строку из DataGridView с товарами
-             DataGridViewRow selectedRow = tblProduct.SelectedRows[0];
-
-             // Получаем данные о товаре
-             string barcode = selectedRow.Cells["Barcode"].Value.ToString();
-             string name = selectedRow.Cells["NameProduct"].Value.ToString();
-             decimal price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
-
-             // Добавляем товар в корзину (второй DataGridView)
-             tblCart.Rows.Add(barcode, name, price);*/
-
-            try
-            {
-                tableProductBindingSource.MoveFirst();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void btnMedicament_Click(object sender, EventArgs e)
         {
             Form frm = new frmMedicament();
             frm.Show();
-        }
-
-        private void btnSell_Click(object sender, EventArgs e)
-        {
-           /* if (txtBarcodeSell.Text.Length != 13)
-            {
-                MessageBox.Show("Введен некорректный штрихкод", "Добавлние товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //   txtBarcode.Text = string.Empty; // Очистить поле ввода
-                return;
-            }
-            foreach (char c in txtBarcodeSell.Text)
-            {
-                if (!char.IsDigit(c))
-                {
-                    MessageBox.Show("Введен некорректный штрихкод");
-                    //     txtBarcode.Text = string.Empty;
-                    break;
-                }
-            }
-
-            sqlCommand_Sell.Parameters["@barcode"].Value = txtBarcodeSell.Text;
-            sqlCommand_Sell.Parameters["@quantity"].Value = numUD_count.Text;
-            sqlCommand_Sell.Parameters["@sotr"].Value = cbCashier.Text;
-
-            sqlConnection.Open();
-            sqlCommand_Sell.ExecuteNonQuery(); ;
-            sqlConnection.Close();
-
-            */
-
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -133,35 +73,72 @@ namespace Pharmacy
             this.Hide();
         }
 
-        private void txtCashier_TextChanged(object sender, EventArgs e)
-        {
-       //     txtCashier.Text = frmAuth.txtLogin;
-        }
-
         private void ClearInsertSell(object sender, EventArgs e)
         {
             txtBarcodeSell.Text = "";
             numUD_count.Value = 1;
         }
 
+        private void RefreshProductTable()
+        {
+            tblProduct.DataSource = null; // Очищаем источник данных
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tableProduct", sqlConnection);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            BindingSource bs = new BindingSource();
+            bs.DataSource = table;
+            tblProduct.DataSource = bs;
+
+            // Повторное применение фильтра после обновления таблицы
+            tableProductBindingSource = bs;
+            tableProductBindingSource.Filter = "NameProduct Like '" + "%" + txtFind.Text
+                + "%' OR Brand Like '%" + "%" + txtFind.Text + "%"
+                + "%' OR NameCategory Like '%" + "%" + txtFind.Text + "%'";
+        }
+
         private void btnSell_Click_1(object sender, EventArgs e)
         {
             if (txtBarcodeSell.Text.Length != 13)
             {
-                MessageBox.Show("Введен некорректный штрихкод", "Оформление продажи", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //   txtBarcode.Text = string.Empty; // Очистить поле ввода
+                MessageBox.Show("Введен некорректный штрихкод", "Оформление продажи",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             foreach (char c in txtBarcodeSell.Text)
             {
                 if (!char.IsDigit(c))
                 {
-                    MessageBox.Show("Введен некорректный штрихкод", "Оформление продажи", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //     txtBarcode.Text = string.Empty;
-                    break;
+                    MessageBox.Show("Введен некорректный штрихкод", "Оформление продажи",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+            }
+
+            //проверка того, что в таблице Продукт такой товар существует
+            sqlCommand_checkBarcode.Parameters["@barcode"].Value = txtBarcodeSell.Text;
+
+            sqlConnection.Open();
+            int count = (int)sqlCommand_checkBarcode.ExecuteScalar();
+            sqlConnection.Close();
+
+            if (count == 0)
+            {
+                MessageBox.Show("Такого товара не существует", "Оформление продажи",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    txtBarcode.Text = string.Empty;
+                return;
+            }
+
+            sqlCommand_checkStock.Parameters["@barcode"].Value = txtBarcodeSell.Text;
+            sqlConnection.Open();
+            int availableQuantity = (int)sqlCommand_checkStock.ExecuteScalar();
+            sqlConnection.Close();
+
+            if (availableQuantity < Convert.ToInt32(numUD_count.Text))
+            {
+                MessageBox.Show("Выбранное количество товара больше, чем есть в наличии", "Оформление продажи",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             sqlCommand_Sell.Parameters["@barcode"].Value = txtBarcodeSell.Text;
@@ -169,12 +146,21 @@ namespace Pharmacy
             sqlCommand_Sell.Parameters["@sotr"].Value = txtOutput.Text;
 
             sqlConnection.Open();
-            sqlCommand_Sell.ExecuteNonQuery(); ;
+            sqlCommand_Sell.ExecuteNonQuery();
             sqlConnection.Close();
 
             MessageBox.Show("Продажа оформлена", "Оформление продажи", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ClearInsertSell(sender, e);
+
+            RefreshProductTable();
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            tableProductBindingSource.Filter = "NameProduct Like '" + "%" + txtFind.Text
+            + "%' OR Brand Like '%" + "%" + txtFind.Text + "%"
+            + "%' OR NameCategory Like '%" + "%" + txtFind.Text + "%'";
         }
     }
 }

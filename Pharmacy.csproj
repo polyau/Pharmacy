@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmSeePurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeePurchase.Designer.cs">
+      <DependentUpon>frmSeePurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeeSell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeeSell.Designer.cs">
+      <DependentUpon>frmSeeSell.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddMedicament.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +87,12 @@
     </Compile>
     <Compile Include="frmAuth.Designer.cs">
       <DependentUpon>frmAuth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeeDeleteProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeeDeleteProduct.Designer.cs">
+      <DependentUpon>frmSeeDeleteProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDirector.cs">
       <SubType>Form</SubType>
@@ -125,6 +143,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmSeePurchase.resx">
+      <DependentUpon>frmSeePurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeeSell.resx">
+      <DependentUpon>frmSeeSell.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddMedicament.resx">
       <DependentUpon>frmAddMedicament.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAnalogs.resx">
       <DependentUpon>frmAnalogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeeDeleteProduct.resx">
+      <DependentUpon>frmSeeDeleteProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDirector.resx">
       <DependentUpon>frmDirector.cs</DependentUpon>

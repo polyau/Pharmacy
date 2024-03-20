@@ -46,17 +46,13 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnAddToCart = new System.Windows.Forms.Button();
             this.numUD_count = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnRmFromCart = new System.Windows.Forms.Button();
             this.btnSell = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.sotrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.getCashierSotrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sotrTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.SotrTableAdapter();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tblCart = new System.Windows.Forms.DataGridView();
             this.sqlConnection = new System.Data.SqlClient.SqlConnection();
             this.sqlCommand_findAnalogs = new System.Data.SqlClient.SqlCommand();
             this.btnMedicament = new System.Windows.Forms.Button();
@@ -71,6 +67,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtOutput = new System.Windows.Forms.TextBox();
+            this.sqlCommand_checkStock = new System.Data.SqlClient.SqlCommand();
+            this.sqlCommand_checkBarcode = new System.Data.SqlClient.SqlCommand();
             ((System.ComponentModel.ISupportInitialize)(this.tblProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
@@ -78,7 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sotrBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getCashierSotrBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblCart)).BeginInit();
             this.SuspendLayout();
             // 
             // tblProduct
@@ -97,7 +94,7 @@
             this.minReserveDataGridViewTextBoxColumn,
             this.inStockDataGridViewTextBoxColumn});
             this.tblProduct.DataSource = this.tableProductBindingSource;
-            this.tblProduct.Location = new System.Drawing.Point(-3, -1);
+            this.tblProduct.Location = new System.Drawing.Point(107, 2);
             this.tblProduct.Name = "tblProduct";
             this.tblProduct.ReadOnly = true;
             this.tblProduct.RowHeadersWidth = 51;
@@ -193,7 +190,7 @@
             this.btnFindAnalog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnFindAnalog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnFindAnalog.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFindAnalog.Location = new System.Drawing.Point(944, 59);
+            this.btnFindAnalog.Location = new System.Drawing.Point(749, 527);
             this.btnFindAnalog.Name = "btnFindAnalog";
             this.btnFindAnalog.Size = new System.Drawing.Size(226, 41);
             this.btnFindAnalog.TabIndex = 1;
@@ -205,7 +202,7 @@
             // 
             this.txtFind.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtFind.Location = new System.Drawing.Point(460, 379);
+            this.txtFind.Location = new System.Drawing.Point(570, 382);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(248, 30);
             this.txtFind.TabIndex = 2;
@@ -216,7 +213,7 @@
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnFind.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFind.Location = new System.Drawing.Point(714, 375);
+            this.btnFind.Location = new System.Drawing.Point(824, 378);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(109, 37);
             this.btnFind.TabIndex = 3;
@@ -230,7 +227,7 @@
             this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnReset.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnReset.Location = new System.Drawing.Point(829, 375);
+            this.btnReset.Location = new System.Drawing.Point(939, 378);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(109, 37);
             this.btnReset.TabIndex = 4;
@@ -238,25 +235,11 @@
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnAddToCart
-            // 
-            this.btnAddToCart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddToCart.BackColor = System.Drawing.Color.Gray;
-            this.btnAddToCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddToCart.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddToCart.Location = new System.Drawing.Point(944, 187);
-            this.btnAddToCart.Name = "btnAddToCart";
-            this.btnAddToCart.Size = new System.Drawing.Size(226, 41);
-            this.btnAddToCart.TabIndex = 5;
-            this.btnAddToCart.Text = "Добавить в корзину";
-            this.btnAddToCart.UseVisualStyleBackColor = false;
-            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
-            // 
             // numUD_count
             // 
             this.numUD_count.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numUD_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numUD_count.Location = new System.Drawing.Point(959, 509);
+            this.numUD_count.Location = new System.Drawing.Point(417, 512);
             this.numUD_count.Name = "numUD_count";
             this.numUD_count.Size = new System.Drawing.Size(91, 30);
             this.numUD_count.TabIndex = 7;
@@ -272,24 +255,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(809, 511);
+            this.label1.Location = new System.Drawing.Point(267, 514);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Количество:";
-            // 
-            // btnRmFromCart
-            // 
-            this.btnRmFromCart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRmFromCart.BackColor = System.Drawing.Color.Gray;
-            this.btnRmFromCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRmFromCart.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRmFromCart.Location = new System.Drawing.Point(944, 234);
-            this.btnRmFromCart.Name = "btnRmFromCart";
-            this.btnRmFromCart.Size = new System.Drawing.Size(226, 41);
-            this.btnRmFromCart.TabIndex = 9;
-            this.btnRmFromCart.Text = "Удалить из корзины";
-            this.btnRmFromCart.UseVisualStyleBackColor = false;
             // 
             // btnSell
             // 
@@ -297,9 +267,9 @@
             this.btnSell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSell.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSell.Location = new System.Drawing.Point(808, 598);
+            this.btnSell.Location = new System.Drawing.Point(323, 598);
             this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(214, 41);
+            this.btnSell.Size = new System.Drawing.Size(214, 43);
             this.btnSell.TabIndex = 10;
             this.btnSell.Text = "Оформить продажу";
             this.btnSell.UseVisualStyleBackColor = false;
@@ -311,7 +281,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(809, 553);
+            this.label2.Location = new System.Drawing.Point(308, 553);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 25);
             this.label2.TabIndex = 11;
@@ -330,30 +300,6 @@
             // sotrTableAdapter
             // 
             this.sotrTableAdapter.ClearBeforeFill = true;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Gray;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(317, 415);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 29);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Корзина";
-            // 
-            // tblCart
-            // 
-            this.tblCart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tblCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tblCart.Location = new System.Drawing.Point(-3, 447);
-            this.tblCart.Name = "tblCart";
-            this.tblCart.RowHeadersWidth = 51;
-            this.tblCart.RowTemplate.Height = 24;
-            this.tblCart.Size = new System.Drawing.Size(802, 206);
-            this.tblCart.TabIndex = 14;
             // 
             // sqlConnection
             // 
@@ -374,7 +320,7 @@
             this.btnMedicament.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnMedicament.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnMedicament.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnMedicament.Location = new System.Drawing.Point(944, 12);
+            this.btnMedicament.Location = new System.Drawing.Point(749, 480);
             this.btnMedicament.Name = "btnMedicament";
             this.btnMedicament.Size = new System.Drawing.Size(226, 41);
             this.btnMedicament.TabIndex = 15;
@@ -392,7 +338,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(2, 384);
+            this.label4.Location = new System.Drawing.Point(112, 387);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(421, 22);
             this.label4.TabIndex = 16;
@@ -429,7 +375,7 @@
             // txtBarcodeSell
             // 
             this.txtBarcodeSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtBarcodeSell.Location = new System.Drawing.Point(959, 473);
+            this.txtBarcodeSell.Location = new System.Drawing.Point(417, 473);
             this.txtBarcodeSell.Name = "txtBarcodeSell";
             this.txtBarcodeSell.Size = new System.Drawing.Size(156, 30);
             this.txtBarcodeSell.TabIndex = 18;
@@ -450,7 +396,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(809, 478);
+            this.label5.Location = new System.Drawing.Point(285, 476);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 25);
             this.label5.TabIndex = 19;
@@ -460,21 +406,36 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(865, 432);
+            this.label6.Location = new System.Drawing.Point(304, 431);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(229, 25);
+            this.label6.Size = new System.Drawing.Size(247, 25);
             this.label6.TabIndex = 20;
             this.label6.Text = "Оформление продажи";
             // 
             // txtOutput
             // 
+            this.txtOutput.Enabled = false;
             this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtOutput.Location = new System.Drawing.Point(956, 550);
+            this.txtOutput.Location = new System.Drawing.Point(417, 550);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(156, 30);
             this.txtOutput.TabIndex = 21;
+            // 
+            // sqlCommand_checkStock
+            // 
+            this.sqlCommand_checkStock.CommandText = "SELECT dbo.checkStock(@barcode)";
+            this.sqlCommand_checkStock.Connection = this.sqlConnection;
+            this.sqlCommand_checkStock.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
+            // 
+            // sqlCommand_checkBarcode
+            // 
+            this.sqlCommand_checkBarcode.CommandText = "SELECT dbo.checkBarcode(@barcode)";
+            this.sqlCommand_checkBarcode.Connection = this.sqlConnection;
+            this.sqlCommand_checkBarcode.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
             // 
             // frmCashier
             // 
@@ -489,14 +450,10 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnMedicament);
-            this.Controls.Add(this.tblCart);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSell);
-            this.Controls.Add(this.btnRmFromCart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numUD_count);
-            this.Controls.Add(this.btnAddToCart);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.txtFind);
@@ -514,7 +471,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sotrBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getCashierSotrBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,16 +486,12 @@
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnAddToCart;
         private System.Windows.Forms.NumericUpDown numUD_count;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnRmFromCart;
         private System.Windows.Forms.Button btnSell;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource sotrBindingSource;
         private PharmacyDataSetTableAdapters.SotrTableAdapter sotrTableAdapter;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView tblCart;
         private System.Data.SqlClient.SqlConnection sqlConnection;
         private System.Data.SqlClient.SqlCommand sqlCommand_findAnalogs;
         private System.Windows.Forms.Button btnMedicament;
@@ -563,5 +515,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtOutput;
+        private System.Data.SqlClient.SqlCommand sqlCommand_checkStock;
+        private System.Data.SqlClient.SqlCommand sqlCommand_checkBarcode;
     }
 }

@@ -44,6 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.sqlCommand_getProductInfo = new System.Data.SqlClient.SqlCommand();
             this.sqlCommand_checkBarcode = new System.Data.SqlClient.SqlCommand();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_count)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,12 +202,27 @@
             this.sqlCommand_checkBarcode.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
             new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
             // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDeleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDeleteProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(42, 574);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(226, 42);
+            this.btnDeleteProduct.TabIndex = 44;
+            this.btnDeleteProduct.Text = "Списанные товары";
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
             // frmWriteOff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtProductInfo);
             this.Controls.Add(this.btnBack);
@@ -246,5 +262,6 @@
         private System.Windows.Forms.Label label5;
         private System.Data.SqlClient.SqlCommand sqlCommand_getProductInfo;
         private System.Data.SqlClient.SqlCommand sqlCommand_checkBarcode;
+        private System.Windows.Forms.Button btnDeleteProduct;
     }
 }

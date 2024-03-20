@@ -103,7 +103,8 @@ namespace Pharmacy
                     sqlConnection.Close();
 
                     // вывод результата через окно сообщения
-                    MessageBox.Show("Характеристики к товару добавлены", "Создание описания товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Характеристики к товару добавлены", "Создание описания товара", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

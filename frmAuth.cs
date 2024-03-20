@@ -42,7 +42,7 @@ namespace Pharmacy
                     MessageBox.Show($"Повторите ввод, количество попыток: {EnterTry}",
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     EnterTry--;
-                    txtLogin.Clear();
+              //      txtLogin.Clear();
                     txtPasswd.Clear();
                 }
 

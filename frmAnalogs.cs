@@ -24,18 +24,35 @@ namespace Pharmacy
 
             if (txtBarcode.Text.Length != 13)
             {
-                MessageBox.Show("Введен некорректный штрихкод");
-                txtBarcode.Text = string.Empty; // Очистить поле ввода
+                MessageBox.Show("Введен некорректный штрихкод", "Просмотр аналогов",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtBarcode.Text = string.Empty; // Очистить поле ввода
                 return;
             }
             foreach (char c in txtBarcode.Text)
             {
                 if (!char.IsDigit(c))
                 {
-                    MessageBox.Show("Введен некорректный штрихкод");
-                    txtBarcode.Text = string.Empty; // Очистить поле ввода
+                    MessageBox.Show("Введен некорректный штрихкод", "Просмотр аналогов",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+               //     txtBarcode.Text = string.Empty;
                     break;
                 }
+            }
+
+            //проверка того, что в таблице Продукт такой товар существует
+            sqlCommand_checkBarcode.Parameters["@barcode"].Value = txtBarcode.Text;
+
+            sqlConnection.Open();
+            int count = (int)sqlCommand_checkBarcode.ExecuteScalar();
+            sqlConnection.Close();
+
+            if (count == 0)
+            {
+                MessageBox.Show("Такого товара не существует", "Просмотр аналогов", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    txtBarcode.Text = string.Empty;
+                return;
             }
 
             sqlCommand_findAnalogs.Parameters["@Barcode"].Value = txtBarcode.Text;
@@ -51,12 +68,6 @@ namespace Pharmacy
             sqlConnection.Open();
             txtProductInfo.Text = sqlCommand_getProductInfo.ExecuteScalar().ToString();
             sqlConnection.Close();
-
-
-
         }
     }
-
-
-    
 }

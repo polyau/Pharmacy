@@ -80,8 +80,6 @@ namespace Pharmacy
             temp.Load(sqlCommand_allSotr.ExecuteReader());
             tblSotr.DataSource = temp;
             sqlConnection.Close();
-
-                
         }
 
         private void btnRemoveSotr_Click(object sender, EventArgs e)
@@ -98,26 +96,12 @@ namespace Pharmacy
                     sqlCommand_retireSotr.ExecuteNonQuery();
                 }
                 sqlConnection.Close();
-
-                /* // удаление сотрудника
-                int selectedIndex = tblSotr.SelectedRows[0].Index;
-                int idSotr = Convert.ToInt32(tblSotr[0, selectedIndex].Value);
-                sqlConnection.Open();
-                using (SqlCommand sqlCommand_remSotr = new SqlCommand("DELETE FROM Sotr WHERE idSotr = @idSotr", sqlConnection))
-                {
-                    sqlCommand_remSotr.Parameters.AddWithValue("@idSotr", idSotr);
-                    sqlCommand_remSotr.ExecuteNonQuery();
-                }
-                sqlConnection.Close();
-              //  MessageBox.Show("Сотрудник удалён", "Удаление сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
-              //  sotrBindingSource.RemoveCurrent();
-                */
             }
+
             else
             {
                 MessageBox.Show("Выберите сотрудника", "Увольнение сотрудника", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-             //  sotrBindingSource.RemoveCurrent();
 
              sqlConnection.Open();
              var temp = new DataTable();

@@ -15,7 +15,7 @@ namespace Pharmacy
     {
         private string word; // Переменная, в которой будет храниться переданное слово
 
-        public frmAddProduct()
+        public frmAddProduct(string word)
         {
             InitializeComponent();
             this.word = word; // Сохранение переданного слова в переменную word
@@ -49,8 +49,8 @@ namespace Pharmacy
         private void btnCreate_Click(object sender, EventArgs e)
         {
             if (txtBarcode.Text.Length != 13) {
-                MessageBox.Show("Введен некорректный штрихкод", "Добавлние товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBarcode.Text = string.Empty; // Очистить поле ввода
+                MessageBox.Show("Введен некорректный штрихкод", "Добавлние товара", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

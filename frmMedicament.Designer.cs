@@ -61,6 +61,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.sqlCommand_getProductInfo = new System.Data.SqlClient.SqlCommand();
+            this.sqlCommand_checkBarcode = new System.Data.SqlClient.SqlCommand();
             this.SuspendLayout();
             // 
             // label1
@@ -378,6 +379,13 @@
             this.sqlCommand_getProductInfo.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
             new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
             // 
+            // sqlCommand_checkBarcode
+            // 
+            this.sqlCommand_checkBarcode.CommandText = "SELECT dbo.checkBarcode(@barcode)";
+            this.sqlCommand_checkBarcode.Connection = this.sqlConnection;
+            this.sqlCommand_checkBarcode.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("@barcode", System.Data.SqlDbType.Char, 13)});
+            // 
             // frmMedicament
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -455,5 +463,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label15;
         private System.Data.SqlClient.SqlCommand sqlCommand_getProductInfo;
+        private System.Data.SqlClient.SqlCommand sqlCommand_checkBarcode;
     }
 }

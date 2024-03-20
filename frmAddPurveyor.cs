@@ -57,22 +57,6 @@ namespace Pharmacy
 
         private void brnAdd_Click(object sender, EventArgs e)
         {
-         /*   // проверка уникальности номера
-            string query = "SELECT COUNT(*) FROM Sotr WHERE PhoneNum = @phoneNum";
-
-            SqlCommand command = new SqlCommand(query, sqlConnection);
-            command.Parameters.AddWithValue("@phoneNum", txtPhone.Text);
-
-            sqlConnection.Open();
-            int count = (int)command.ExecuteScalar(); // Получаем количество записей с введенным номером
-            sqlConnection.Close();
-            // Проверяем, было ли найдено совпадение
-            if (count > 0)
-            {
-                MessageBox.Show("Данный номер телефона уже имеется в базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            } */
-
             if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPerson.Text) ||
                 string.IsNullOrEmpty(txtCountry.Text) || string.IsNullOrEmpty(txtSity.Text) ||
                 string.IsNullOrEmpty(txtAddress.Text) || string.IsNullOrEmpty(txtPhone.Text))
@@ -96,7 +80,7 @@ namespace Pharmacy
                 sqlConnection.Close();
                 ClearInsert2(sender, e);
 
-                MessageBox.Show("Запрос на добавление новго поставщика выполнен",
+                MessageBox.Show("Запрос на добавление новoго поставщика выполнен",
                 "Добавление поставщика", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -109,7 +93,7 @@ namespace Pharmacy
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Form frm = new frmManager(word);
+            Form frm = new frmProduct(word);
             frm.Show();
             this.Hide();
         }

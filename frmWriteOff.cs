@@ -16,7 +16,7 @@ namespace Pharmacy
     {
         private string word; // Переменная, в которой будет храниться переданное фио
 
-        public frmWriteOff()
+        public frmWriteOff(string word)
         {
             InitializeComponent();
             this.word = word; // Сохранение переданного фио в переменную word
@@ -30,13 +30,13 @@ namespace Pharmacy
                 txtBarcode.Text = string.Empty; // Очистить поле ввода
                 return;
             }
+
             foreach (char c in txtBarcode.Text)
             {
                 if (!char.IsDigit(c))
                 {
                     MessageBox.Show("Введен некорректный штрихкод", "Списание товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtBarcode.Text = string.Empty; // Очистить поле ввода
-                  //  break
+                    txtBarcode.Text = string.Empty;
                     return;
                 }
             }
@@ -49,8 +49,8 @@ namespace Pharmacy
 
             if (count == 0)
             {
-                MessageBox.Show("Такого товара не существует", "Списание товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    txtBarcode.Text = string.Empty;
+                MessageBox.Show("Такого товара не существует", "Списание товара", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -82,6 +82,13 @@ namespace Pharmacy
         private void btnBack_Click(object sender, EventArgs e)
         {
             Form frm = new frmProduct(word);
+            frm.Show();
+            this.Hide();
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmSeeDeleteProduct(word);
             frm.Show();
             this.Hide();
         }

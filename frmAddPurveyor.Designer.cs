@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddPurveyor));
             this.tblPurveyor = new System.Windows.Forms.DataGridView();
-            this.pharmacyDataSet = new Pharmacy.PharmacyDataSet();
-            this.purveyorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.purveyorTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.PurveyorTableAdapter();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.txtFind = new System.Windows.Forms.TextBox();
             this.namePurveyorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactPersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +38,13 @@
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.termsPayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purveyorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pharmacyDataSet = new Pharmacy.PharmacyDataSet();
+            this.purveyorTableAdapter = new Pharmacy.PharmacyDataSetTableAdapters.PurveyorTableAdapter();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPerson = new System.Windows.Forms.TextBox();
@@ -66,8 +66,8 @@
             this.sqlCommand_allPurv = new System.Data.SqlClient.SqlCommand();
             this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tblPurveyor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purveyorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tblPurveyor
@@ -92,68 +92,6 @@
             this.tblPurveyor.RowTemplate.Height = 24;
             this.tblPurveyor.Size = new System.Drawing.Size(930, 204);
             this.tblPurveyor.TabIndex = 0;
-            // 
-            // pharmacyDataSet
-            // 
-            this.pharmacyDataSet.DataSetName = "PharmacyDataSet";
-            this.pharmacyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // purveyorBindingSource
-            // 
-            this.purveyorBindingSource.DataMember = "Purveyor";
-            this.purveyorBindingSource.DataSource = this.pharmacyDataSet;
-            // 
-            // purveyorTableAdapter
-            // 
-            this.purveyorTableAdapter.ClearBeforeFill = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(125, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(430, 22);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Проверьте наличие поставщика по его названию:";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnReset.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnReset.Location = new System.Drawing.Point(946, 220);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(109, 36);
-            this.btnReset.TabIndex = 39;
-            this.btnReset.Text = "Сбросить";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnFind
-            // 
-            this.btnFind.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFind.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFind.Location = new System.Drawing.Point(831, 220);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(109, 36);
-            this.btnFind.TabIndex = 38;
-            this.btnFind.Text = "Найти";
-            this.btnFind.UseVisualStyleBackColor = false;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // txtFind
-            // 
-            this.txtFind.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtFind.Location = new System.Drawing.Point(573, 223);
-            this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(254, 30);
-            this.txtFind.TabIndex = 37;
             // 
             // namePurveyorDataGridViewTextBoxColumn
             // 
@@ -217,6 +155,68 @@
             this.termsPayDataGridViewTextBoxColumn.Name = "termsPayDataGridViewTextBoxColumn";
             this.termsPayDataGridViewTextBoxColumn.ReadOnly = true;
             this.termsPayDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // purveyorBindingSource
+            // 
+            this.purveyorBindingSource.DataMember = "Purveyor";
+            this.purveyorBindingSource.DataSource = this.pharmacyDataSet;
+            // 
+            // pharmacyDataSet
+            // 
+            this.pharmacyDataSet.DataSetName = "PharmacyDataSet";
+            this.pharmacyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // purveyorTableAdapter
+            // 
+            this.purveyorTableAdapter.ClearBeforeFill = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(121, 228);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(430, 22);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Проверьте наличие поставщика по его названию:";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnReset.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnReset.Location = new System.Drawing.Point(946, 220);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(109, 36);
+            this.btnReset.TabIndex = 39;
+            this.btnReset.Text = "Сбросить";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnFind
+            // 
+            this.btnFind.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFind.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFind.Location = new System.Drawing.Point(833, 220);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(109, 36);
+            this.btnFind.TabIndex = 38;
+            this.btnFind.Text = "Найти";
+            this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // txtFind
+            // 
+            this.txtFind.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtFind.Location = new System.Drawing.Point(587, 223);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(240, 30);
+            this.txtFind.TabIndex = 37;
             // 
             // label1
             // 
@@ -456,8 +456,8 @@
             this.Text = "Добавление поставщиков";
             this.Load += new System.EventHandler(this.frmAddPurveyor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblPurveyor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purveyorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
