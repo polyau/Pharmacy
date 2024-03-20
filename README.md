@@ -4,3 +4,5 @@
 Используемая СУБД - Microsoft SQL Server, пользовательский интерфейс реализован с помощью WindowsForms.  
 
 Ход выполнения работы и её результат можно посмотреть в файле [КП УД_Виговская ПИ_ИДБ-21-06.pdf](https://github.com/polyau/Pharmacy/blob/d350eae3f7d7b944fe4c6412877db6796c8131bf/%D0%9A%D0%9F%20%D0%A3%D0%94_%D0%92%D0%B8%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%9F%D0%98_%D0%98%D0%94%D0%91-21-06.pdf).  
+
+Также в репозитории можно найти скрипт БД [script_db_pharmacy.sql](https://github.com/polyau/Pharmacy/blob/6a29c5aa9124e235ac29d80e52b6f10072e46f27/script_db_pharmacy_from_ssms.sql).
